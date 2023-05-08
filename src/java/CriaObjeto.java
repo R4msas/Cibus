@@ -27,7 +27,7 @@ public static void main(String[] args) throws Exception{
         ListaEncadeada manual=new ListaEncadeada();//cria uma nova instância da classe lista encadeada para inserir as Ofertas que não foram classificadas pelo método e precisam de ser feitas manualmente
         manual.primeiro=manual.ultimo=new Celula();
         tmp=lista.primeiro;
-        while(tmp!=null)//percorre por toda a lista encadeada
+        while(tmp.getProx()!=null)//percorre por toda a lista encadeada
         {
             tmp=tmp.getProx();
             int tipoProduto=tmp.getAtual().classificaTipo();
@@ -133,29 +133,30 @@ class Oferta{
         int posicao=0;
         Boolean possuiPosicao=false;
         int tipoProduto=-1;
-        if(descricao.contains("arroz"))
+        String stringRecebida =descricao.toLowerCase();
+        if(stringRecebida.contains("arroz"))
         {
             possuiPosicao=true;
             posicao=3;
         }
-        else if(descricao.contains("suco"))
+        else if(stringRecebida.contains("suco"))
         {
             possuiPosicao=true;
             posicao=7;
         }
-        else if(descricao.contains("cerveja"))
+        else if(stringRecebida.contains("cerveja"))
         {
             possuiPosicao=true;
             posicao=15;
         }
-        else if(descricao.contains("farinha de trigo"))
+        else if(stringRecebida.contains("farinha de trigo"))
         {
             possuiPosicao=true;
             posicao=16;
         }
         while(possuiPosicao==false&&posicao<carne.length)
         {
-            if(descricao.contains(carne[posicao]))
+            if(stringRecebida.contains(carne[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=0;
@@ -167,7 +168,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<bebidaAlcolica.length)
         {
-            if(descricao.contains(bebidaAlcolica[posicao]))
+            if(stringRecebida.contains(bebidaAlcolica[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=2;
@@ -179,7 +180,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<macarrao.length)
         {
-            if(descricao.contains(macarrao[posicao]))
+            if(stringRecebida.contains(macarrao[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=6;
@@ -191,7 +192,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<oleo.length)
         {
-            if(descricao.contains(oleo[posicao]))
+            if(stringRecebida.contains(oleo[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=5;
@@ -203,7 +204,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<refrigerante.length)
         {
-            if(descricao.contains(refrigerante[posicao]))
+            if(stringRecebida.contains(refrigerante[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=8;
@@ -215,7 +216,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<bolacha.length)
         {
-            if(descricao.contains(bolacha[posicao]))
+            if(stringRecebida.contains(bolacha[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=9;
@@ -227,7 +228,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<pao.length)
         {
-            if(descricao.contains(pao[posicao]))
+            if(stringRecebida.contains(pao[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=10;
@@ -239,7 +240,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<laticinio.length)
         {
-            if(descricao.contains(laticinio[posicao]))
+            if(stringRecebida.contains(laticinio[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=11;
@@ -251,7 +252,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<xampu.length)
         {
-            if(descricao.contains(xampu[posicao]))
+            if(stringRecebida.contains(xampu[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=12;
@@ -263,7 +264,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<sabao.length)
         {
-            if(descricao.contains(sabao[posicao]))
+            if(stringRecebida.contains(sabao[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=13;
@@ -275,7 +276,7 @@ class Oferta{
         posicao=0;
         while(possuiPosicao==false&&posicao<cafe.length)
         {
-            if(descricao.contains(cafe[posicao]))
+            if(stringRecebida.contains(cafe[posicao]))
             {
                 possuiPosicao=true;
                 tipoProduto=17;
@@ -283,7 +284,7 @@ class Oferta{
             else{
             posicao++;
             }
-        posicao=0;}
+        }
  
 
 return tipoProduto;
