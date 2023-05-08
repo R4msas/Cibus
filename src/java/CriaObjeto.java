@@ -29,7 +29,7 @@ public static void main(String[] args) throws Exception{
         tmp=lista.primeiro;
         while(tmp.getProx()!=null)//percorre por toda a lista encadeada
         {
-            tmp=tmp.getProx();
+            tmp=lista.primeiro.getProx();
             int tipoProduto=tmp.getAtual().classificaTipo();
             if(tipoProduto==-1)
             {
@@ -43,7 +43,7 @@ public static void main(String[] args) throws Exception{
                 temp2.getAtual().setTipoProduto(tipoProduto);
                 pronta.inserirFinal(temp2);
             }
-            lista.removerFim();
+            lista.removerInicio();
 
         }
         
