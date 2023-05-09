@@ -31,26 +31,23 @@ public static void main(String[] args) throws Exception{
         {
             tmp=lista.primeiro.getProx();
             int tipoProduto=tmp.getAtual().classificaTipo();
-            if(tipoProduto==-1)
+            if(tipoProduto==-1)//se o tipo de produto não for inserido, altera para -1 e guarda na lista em que é necessário inserir manualmente
             {
                 Celula temp=new Celula();
                 temp.setAtual(tmp.getAtual());
-                manual.inserirFinal(temp);
+                manual.inserirFinal(temp);//insere no final da lista
             }
             else{
                 Celula temp2=new Celula();
                 temp2.setAtual(tmp.getAtual());
                 temp2.getAtual().setTipoProduto(tipoProduto);
-                pronta.inserirFinal(temp2);
+                pronta.inserirFinal(temp2);//caso o produto estiver pronto, insere na lista de objetos prontos
             }
-            lista.removerInicio();
+            lista.removerInicio();//remove o produto da lista inicial
 
         }
         
-        MyIO.println("Objetos da lista ordenada");
-        lista.imprimeTodos();
-        MyIO.println("Objetos da lista pronta");
-        pronta.imprimeTodos();
+        
         MyIO.println("Objetos da lista manual");
         manual.imprimeTodos();
 
@@ -149,7 +146,7 @@ class Oferta{
             possuiPosicao=true;
             posicao=15;
         }
-        else if(stringRecebida.contains("farinha de trigo"))
+              else if(stringRecebida.contains("farinha de trigo"))
         {
             possuiPosicao=true;
             posicao=16;
@@ -262,7 +259,7 @@ class Oferta{
             }
         }
         posicao=0;
-        while(possuiPosicao==false&&posicao<sabao.length)
+           while(possuiPosicao==false&&posicao<sabao.length)
         {
             if(stringRecebida.contains(sabao[posicao]))
             {
@@ -282,7 +279,7 @@ class Oferta{
                 tipoProduto=17;
             }
             else{
-            posicao++;
+             posicao++;
             }
         }
  
