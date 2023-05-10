@@ -1,4 +1,4 @@
-package MODEL;
+package model;
 
 public class Supermercado {
 	private int id_supermercado;
