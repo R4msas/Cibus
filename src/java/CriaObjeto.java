@@ -6,51 +6,12 @@ import java.io.File;
 import java.util.Scanner;
 public class CriaObjeto {
 public static void main(String[] args) throws Exception{
-    ListaEncadeada lista=new ListaEncadeada();
-    MyIO.setCharset("UTF-8");
-        Scanner sc = new Scanner(new File("resposta.txt"));
-        String stringRecebida =sc.nextLine();//inicia a primeira leitura da primeira linha
-        Celula tmp=new Celula();
-        lista.primeiro=lista.ultimo=new Celula();//primeiro e último apontam para a mesma célula.
-        while (sc.hasNextLine())//enquanto houver uma nova linha lerá o arquivo, gerando um novo objeto da classe Oferta
-        {
-            Oferta nova =new Oferta();
-            nova.ler(stringRecebida);
-            tmp.setAtual(nova);
-            lista.inserirFinal(tmp);       
-            stringRecebida = sc.nextLine();
-            tmp=new Celula();
-        }
-        sc.close();
-        ListaEncadeada pronta=new ListaEncadeada();//cria uma nova instância da classe lista encadeada para inserir as Ofertas que foram classificadas pelo método
-        pronta.primeiro=pronta.ultimo=new Celula(); 
-        ListaEncadeada manual=new ListaEncadeada();//cria uma nova instância da classe lista encadeada para inserir as Ofertas que não foram classificadas pelo método e precisam de ser feitas manualmente
-        manual.primeiro=manual.ultimo=new Celula();
-        tmp=lista.primeiro;
-        while(tmp.getProx()!=null)//percorre por toda a lista encadeada
-        {
-            tmp=lista.primeiro.getProx();
-            int tipoProduto=tmp.getAtual().classificaTipo();
-            if(tipoProduto==-1)//se o tipo de produto não for inserido, altera para -1 e guarda na lista em que é necessário inserir manualmente
-            {
-                Celula temp=new Celula();
-                temp.setAtual(tmp.getAtual());
-                manual.inserirFinal(temp);//insere no final da lista
-            }
-            else{
-                Celula temp2=new Celula();
-                temp2.setAtual(tmp.getAtual());
-                temp2.getAtual().setTipoProduto(tipoProduto);
-                pronta.inserirFinal(temp2);//caso o produto estiver pronto, insere na lista de objetos prontos
-            }
-            lista.removerInicio();//remove o produto da lista inicial
-
-        }
-        
-        
-        MyIO.println("Objetos da lista manual");
-        manual.imprimeTodos();
-
+    ListaEncadeada lista=new ListaEncadeada();        
+    lista.criaListaDeOfertas("arquivo.txt");
+    ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
+    lista.percorreAListaEClassifica(necessitaDeClassificacao);
+    lista.imprimeTodos();
+    necessitaDeClassificacao.imprimeTodos();
 }   
     
 }
@@ -105,6 +66,8 @@ class Oferta{
         this.codSupermercado = 0;//este construtor seta como default o código pois o código 0 é do supermercado BH
         this.tipoProduto = 0;
     }
+    
+   
     public void ler(String stringRecebida) throws Exception
     {
             String[] keyValue = stringRecebida.split(":");
@@ -114,6 +77,7 @@ class Oferta{
             setPreco(precoProduto);
             
     }
+
     public int classificaTipo()//efetua a comparação da descrição com termos comuns de produtos, caso seja possível retorna o inteiro para setTipo, do contrário retorna -1
     {
         String carne[]={"carne", "acem", "acém", "paleta", "costela", "picanha", "chã de", "costelinha","hamburguer","linguica","linguiça","file","filé","salsicha","empanado"};
@@ -322,13 +286,16 @@ class ListaEncadeada{
     }
     public void inserirFinal(Celula tmp)
     {
-
         ultimo.setProx(tmp);
         ultimo=tmp;
         tmp=null;
 
     }
    public Oferta removerInicio()  {
+        if(primeiro.getProx()==ultimo)
+        {
+            ultimo=primeiro;
+        }
         Oferta resposta=primeiro.getProx().getAtual();
         primeiro.setProx(primeiro.getProx().getProx());
         return resposta;
@@ -344,7 +311,48 @@ class ListaEncadeada{
         ultimo=temporaria;
         return resposta;
     }
-   public void imprimeTodos()//falta definir a forma de impressão
+    public void percorreAListaEClassifica(ListaEncadeada necessitaDeClassificacao)//percorre a lista de e classifica e chama a função que classifica cada oferta
+    {            
+        necessitaDeClassificacao.ultimo=necessitaDeClassificacao.primeiro=new Celula();
+        Celula tmp=primeiro;
+        while(tmp.getProx()!=null||tmp==ultimo)//percorre por toda a lista encadeada
+        {
+            tmp=primeiro.getProx();
+            int tipoProduto=tmp.getAtual().classificaTipo();
+            
+             if(tipoProduto==-1)//se o tipo de produto não for inserido, altera para -1 e guarda na lista em que é necessário inserir manualmente
+            {
+                Celula temp=new Celula();
+                temp.setAtual(tmp.getAtual());
+                necessitaDeClassificacao.inserirFinal(temp);//insere no final da lista
+            }
+            else{
+                Celula temp2=new Celula();
+                temp2.setAtual(tmp.getAtual());
+                temp2.getAtual().setTipoProduto(tipoProduto);
+                //enviar para o banco de dados  
+                } 
+                removerInicio();
+        }
+    }
+    public void criaListaDeOfertas(String nomeDoArquivo) throws Exception
+    {
+        Scanner sc = new Scanner(new File(nomeDoArquivo));
+        String stringRecebida =sc.nextLine();//inicia a primeira leitura da primeira linha
+        Celula tmp=new Celula();
+        primeiro=ultimo=new Celula();//primeiro e último apontam para a mesma célula.
+        while (sc.hasNextLine())//enquanto houver uma nova linha lerá o arquivo, gerando um novo objeto da classe Oferta
+        {
+            Oferta nova =new Oferta();
+            nova.ler(stringRecebida);
+            tmp.setAtual(nova);
+            inserirFinal(tmp);       
+            stringRecebida = sc.nextLine();
+            tmp=new Celula();
+        }
+        sc.close();
+    }
+    public void imprimeTodos()//falta definir a forma de impressão
     {
         Celula tmp=primeiro;
         while(tmp.getProx()!=null)

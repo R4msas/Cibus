@@ -1,0 +1,414 @@
+<div class="menu-responsive">
+		<div class="epa-flag menu-close">
+			<i class="sprite-Bandeira_2"></i>
+			<i class="sprite-icon-close inside-flag"></i>
+		</div>
+		<div class="social-networks-responsive">
+			  <a href="https://www.facebook.com/epasupermercados" target="_blank">
+    <i class="sprite-icon-facebook"></i>
+</a>
+<a href="https://www.instagram.com/epasupermercados/" target="_blank">
+    <i class="sprite-icon-instagram"></i>
+</a>
+<a href="https://www.youtube.com/c/epabrsupermercados" target="_blank">
+    <i class="sprite-icon-youtube"></i>
+</a>		</div>
+
+		<div class="menu-primary-container-responsive"><ul id="primary-nav-responsive" class="primary-nav-responsive"><li id="menu-item-120" class="menu-nossas-lojas menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="https://www.epa.com.br/nossas-lojas/">Nossas lojas</a></li>
+<li id="menu-item-15" class="menu-ofertas menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-13 current_page_item menu-item-15"><a href="https://www.epa.com.br/mg/ofertas-epa/">Ofertas</a></li>
+<li id="menu-item-226" class="menu-churrascometro menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.epa.com.br/churrascometro/">Churrascômetro</a></li>
+<li id="menu-item-19" class="menu-receitas menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a href="https://www.epa.com.br/receitas/">Receitas</a></li>
+<li id="menu-item-91" class="menu-lista-compras menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="https://www.epa.com.br/lista-de-compras/">Lista de Compras</a></li>
+<li id="menu-item-10079" class="menu-cartao-facil menu-item menu-item-type-post_type menu-item-object-page menu-item-10079"><a href="https://www.epa.com.br/cartao-facil-epa/">Cartão Fácil Epa</a></li>
+</ul></div><div class="menu-secondary-container-responsive"><ul id="secondary-nav-responsive" class="secondary-nav-responsive"><li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33"><a href="https://www.epa.com.br/sobre-o-epa/">Sobre o EPA</a></li>
+<li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="https://www.epa.com.br/mg/acontece-no-epa/">Acontece no EPA</a></li>
+<li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31"><a href="https://www.epa.com.br/fale-conosco/">Fale Conosco</a></li>
+<li id="menu-item-10134" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10134"><a href="https://www.epa.com.br/trabalhe-conosco/">Trabalhe Conosco</a></li>
+<li id="menu-item-7225" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7225"><a target="_blank" href="http://fornecedordma.grupodma.com.br/agenda/">Área do fornecedor</a></li>
+</ul></div></div>
+<div class="overlay-menu"></div>
+ <main>
+	<header>
+		<div class="container-fluid">
+			<div class="container top-header">
+				<div class="row">
+					<div class="padding-left-0 col-xs-3 col-sm-1 col-md-2 logo-epa">
+						<a href="https://www.epa.com.br">
+							<i class="sprite-logo-epa"></i>
+							<i class="sprite-logo-epa-small margin-top-10 margin-bottom-10"></i>
+						</a>
+					</div>
+					<div class="padding-right-0 col-xs-9 col-sm-11 col-md-10">
+						<div class="header-options">
+							<span class="hidden-xs">Escolha sua região:</span>
+							<select name="seleciona-estado" class="seleciona-estado" id="js-seleciona-estado">
+								
+									 <option data-uf="MG" data-pageid="7" data-id="7" value="mg" selected="">Belo Horizonte e Região</option>
+								
+									 <option data-uf="ES" data-pageid="7" data-id="9" value="es">Espírito Santo</option>
+								
+									 <option data-uf="MG" data-pageid="7" data-id="197" value="valadares">Rio Doce e Mucuri</option>
+															</select>
+							<div class="newsletter-header hidden-xs">
+								<button class="btn-epa btn-sm" id="js-newsletter-header"><i class="sprite-icon-newsletter-small icon-l"></i>Cadastre-se e receba nossas ofertas</button>
+								
+<div class="newsletter newsletter-subscription">
+    <form method="post" action="https://www.epa.com.br/?na=s">
+        <input type="hidden" name="np1" value="7">
+        <input type="hidden" name="np2" value="Belo Horizonte e Região">
+        <input type="hidden" name="nl[]" value="01">
+        
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <p class="wysija-paragraph margin-bottom-10">
+                    <input class="wysija-input newsletter-firstname" type="text" name="nn" title="Seu nome" placeholder="Seu nome" required="">
+                </p>
+            </div>
+            <div class="col-xs-7 ">
+                <p class="wysija-paragraph margin-bottom-10">
+                    <input class="wysija-input newsletter-email" type="email" name="ne" title="Digite aqui seu e-mail para receber as novidades!" placeholder="Digite aqui seu e-mail" required="">
+                </p>
+            </div>
+            <div class="col-xs-5 padding-left-0">
+                <input class="wysija-submit btn-newsletter-header btn-block btn-xs margin-0 newsletter-submit" type="submit" value="Assinar!">
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- <div class="widget_wysija_cont html_wysija">
+    <div id="msg-form-wysija-html57a9d500bec4c-2" class="wysija-msg ajax"></div>
+    <form id="form-wysija-html57a9d500bec4c-2" method="post" action="#wysija" class="widget_wysija html_wysija">
+        <div class="form-group row">
+            <div class="col-sm-12">
+                <p class="wysija-paragraph">
+                    <input type="text" name="wysija[user][firstname]" class="validate[required] form-control" title="Seu nome" placeholder="Seu nome" value="" />
+                    <span class="abs-req">
+                        <input type="text" name="wysija[user][abs][firstname]" class="validated[abs][firstname] form-control" value="" />
+                    </span>
+                </p>
+            </div>
+            <div class="col-xs-7 ">
+                <p class="wysija-paragraph">
+                    <input type="text" name="wysija[user][email]" class="validate[required,custom[email]]" title="Seu e-mail" placeholder="Seu e-mail" value="" />
+                    <span class="abs-req">
+                        <input type="text" name="wysija[user][abs][email]" class="validated[abs][email] form-control" value="" />
+                    </span>
+                </p>
+            </div>
+            <div class="col-xs-5 padding-left-0">
+                <input class="wysija-submit-field btn-newsletter-header btn-block btn-xs margin-0" type="submit" value="Assinar!" />
+            </div>
+            <input type="hidden" name="form_id" value="2" />
+            <input type="hidden" name="action" value="save" />
+            <input type="hidden" name="controller" value="subscribers" />
+            <input type="hidden" value="1" name="wysija-page" />
+            <input type="hidden" name="wysija[user_list][list_ids]" value="1" />
+        </div>
+    </form>
+</div> -->
+							</div>
+							<div class="menu-toggle">
+								<div class="menu-line"></div>
+								<div class="menu-line"></div>
+								<div class="menu-line"></div>
+							</div>
+						</div>
+						<div class="social-networks">
+						     <a href="https://www.facebook.com/epasupermercados" target="_blank">
+    <i class="sprite-icon-facebook"></i>
+</a>
+<a href="https://www.instagram.com/epasupermercados/" target="_blank">
+    <i class="sprite-icon-instagram"></i>
+</a>
+<a href="https://www.youtube.com/c/epabrsupermercados" target="_blank">
+    <i class="sprite-icon-youtube"></i>
+</a>						</div>
+						<div class="aux-menu">
+						<div class="menu-secondary-container"><ul id="secondary-nav" class="secondary-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33"><a href="https://www.epa.com.br/sobre-o-epa/">Sobre o EPA</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="https://www.epa.com.br/mg/acontece-no-epa/">Acontece no EPA</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31"><a href="https://www.epa.com.br/fale-conosco/">Fale Conosco</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10134"><a href="https://www.epa.com.br/trabalhe-conosco/">Trabalhe Conosco</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-7225"><a target="_blank" href="http://fornecedordma.grupodma.com.br/agenda/">Área do fornecedor</a></li>
+</ul></div>						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 padding-0">
+					<div class="menu-primary-container"><ul id="primary-nav" class="primary-nav"><li class="menu-nossas-lojas menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="https://www.epa.com.br/nossas-lojas/">Nossas lojas</a></li>
+<li class="menu-ofertas menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-13 current_page_item menu-item-15"><a href="https://www.epa.com.br/mg/ofertas-epa/">Ofertas</a></li>
+<li class="menu-churrascometro menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="https://www.epa.com.br/churrascometro/">Churrascômetro</a></li>
+<li class="menu-receitas menu-item menu-item-type-post_type menu-item-object-page menu-item-19"><a href="https://www.epa.com.br/receitas/">Receitas</a></li>
+<li class="menu-lista-compras menu-item menu-item-type-post_type menu-item-object-page menu-item-91"><a href="https://www.epa.com.br/lista-de-compras/">Lista de Compras</a></li>
+<li class="menu-cartao-facil menu-item menu-item-type-post_type menu-item-object-page menu-item-10079"><a href="https://www.epa.com.br/cartao-facil-epa/">Cartão Fácil Epa</a></li>
+</ul></div>					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+<div class="banner-internal" style="background-image: url(https://www.epa.com.br/wp-content/uploads/2016/07/bg-ofertas.png)">
+    <h1 class="banner-internal-title">Ofertas</h1>
+</div>
+<section class="container epa-section">
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="section-description">No EPA você faz economia de verdade. Conheça nossas ofertas!</p>
+		</div>
+
+		<div class="col-md-8 col-md-offset-2">
+			<div class="video-container">
+				<iframe src="https://www.youtube-nocookie.com/embed/?rel=0&amp;showinfo=0&amp;autoplay=1" allowfullscreen="" width="560" height="315" frameborder="0"></iframe>			</div>
+		</div>
+	</div>
+</section>
+
+<section class="container epa-section">
+	<div class="row">
+		<div class="col-xs-12"><h2 class="section-subtitle"><span>Ofertas da TV</span></h2></div>
+		<div class="col-xs-12">
+			<span class="offer-validate margin-top-0">Ofertas válidas até 14/05/2023, somente na REDE EPA DE MINAS GERAIS.</span>
+		</div>
+	</div>
+	<div class="row">
+    <div class="list-equals">
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2023/05/Bebida-Láctea-Trevinho-TP-200ml.jpg" alt="">
+                <span class="product-price">0,78</span>
+                <span class="product-name">Bebida Achocolatada Trevinho TP 200ml</span>
+
+                            </div>
+
+                    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2023/05/Meio-da-Asa-de-Frango-Congelada-Seara-1kg.gif" alt="">
+                <span class="product-price">15,80</span>
+                <span class="product-name">Meio da Asa de Frango Congelada Seara 1kg</span>
+
+                            </div>
+
+                    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2023/04/Biscoito-Água-e-Sal-Cream-Cracker-e-Maizena-Triunfo-170g-164g.gif" alt="">
+                <span class="product-price">1,98</span>
+                <span class="product-name">Biscoito Água e Sal/ Cream Cracker/ Maisena Triunfo 164g/ 170g</span>
+
+                            </div>
+
+                    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2023/02/Leite-Condensado-Glória-395g.gif" alt="">
+                <span class="product-price">4,98</span>
+                <span class="product-name">Leite Condensado Glória TP 395g</span>
+
+                            </div>
+
+                    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2022/10/linguiça-saudali.jpg" alt="">
+                <span class="product-price">11,80</span>
+                <span class="product-name">Linguiça Suína p/ Churrasco Eder kg</span>
+
+                            </div>
+
+                    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2022/01/salsicha-1.jpg" alt="">
+                <span class="product-price">7,98</span>
+                <span class="product-name">Salsicha p/ Hot Dog Pif Paf kg</span>
+
+                            </div>
+
+                    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2020/02/Filé-de-Peito-de-Frango-Avivar-bandeja-1kg.gif" alt="">
+                <span class="product-price">13,80</span>
+                <span class="product-name">Filé de Peito de Frango Congelado Avivar Bandeja 1kg</span>
+
+                            </div>
+
+                    
+    
+            <div class="col-xs-6 col-sm-3 col-md-3 offer-product">
+                <img class="product-image" src="https://www.epa.com.br/wp-content/uploads/2020/01/Piramutaba-Inteira-Sem-Pele-Cascudo-kg.gif" alt="">
+                <span class="product-price">11,98</span>
+                <span class="product-name">Piramutaba Inteira sem Pele Cascudo kg</span>
+
+                            </div>
+
+                    
+        </div>
+</div>
+</section>
+
+<section class="container epa-section">
+	<div class="row">
+		<div class="col-xs-12"><h2 id="folhetos-de-ofertas" class="section-subtitle"><span>Folhetos de Ofertas</span></h2></div>
+		<div class="clearfix visible-xs"></div>
+																																					<div class="col-sm-4 box-flyers">
+						<div class="flyer-image-container">
+							<img src="https://www.epa.com.br/wp-content/uploads/2023/03/Folheto-Quinzenal-Epa-MG-BALEIA-4pg-230mm-x-310mm-08-05-a-17-05-23-REDE-SITE_Página_1.jpg" alt="Folheto Belo Horizonte e Região" class="img-responsive flyer-image">
+						</div>
+						<span class="flyer-title">Folheto Belo Horizonte e Região</span>
+						<p class="flyer-description">Ofertas válidas de 08/05 à 17/05/2023, somente para as lojas EPA MG informadas no rodapé deste folheto.</p>
+						<a href="http://www.epa.com.br/wp-content/uploads/2023/03/Folheto-Quinzenal-Epa-MG-BALEIA-4pg-230mm-x-310mm-08-05-a-17-05-23-REDE-SITE.pdf" class="btn-epa" target="_blank"><i class="icon-l sprite-icon-download"></i>Baixar folheto</a>
+					</div>
+					
+																						</div>
+</section>
+
+<section class="container epa-section">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="epa-flag margin-left-30 visible-md visible-lg">
+				<i class="sprite-Bandeira_3"></i>
+				<i class="sprite-icon-newsletter-big inside-flag"></i>
+			</div>
+			<div class="epa-flag margin-left-30 hidden-md hidden-lg">
+				<i class="sprite-Bandeira_2"></i>
+				<i class="sprite-icon-newsletter-medium inside-flag"></i>
+			</div>
+			<div class="banner-newsletter">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6">
+						<h2>Cadastre-se e receba nossas ofertas</h2>
+						<p>Receba nossas ofertas e novidades no seu email</p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-6">
+						
+<div class="newsletter newsletter-subscription">
+    <form method="post" action="https://www.epa.com.br/?na=s">
+        <input type="hidden" name="np1" value="7">
+        <input type="hidden" name="np2" value="Belo Horizonte e Região">
+        <input type="hidden" name="nl[]" value="01">
+
+        <p class="wysija-paragraph"><input class="wysija-input newsletter-email" type="email" name="ne" title="Digite aqui seu e-mail para receber as novidades!" placeholder="Digite aqui seu e-mail" required=""></p>
+        <input class="wysija-submit newsletter-submit" type="submit" value="Assinar!">            
+    </form>
+</div>					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<footer class="footer-epa">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 padding-0">
+				<div class="container">
+					<div class="row">
+						<div class="hidden-xs col-sm-3 col-md-2 section-footer">
+							<h2 class="menu-title">Nossas lojas</h2>
+							<ul id="js-list-stores" class="menu-container"><li id="menu-item-208" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-208"><a href="https://www.epa.com.br/mg/">Belo Horizonte e Região</a></li>
+<li id="menu-item-209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-209"><a href="https://www.epa.com.br/es/">Espírito Santo</a></li>
+<li id="menu-item-210" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-210"><a href="https://www.epa.com.br/valadares/">Rio Doce e Mucuri</a></li>
+</ul>						</div>
+						<div class="hidden-xs col-sm-3 col-md-2 section-footer">
+							<h2 class="menu-title">EPA Pra você</h2>
+							<ul id="menu-container" class="menu-container"><li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-13 current_page_item menu-item-81"><a href="https://www.epa.com.br/mg/ofertas-epa/">Ofertas</a></li>
+<li id="menu-item-80" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-80"><a href="https://www.epa.com.br/receitas/">Receitas</a></li>
+<li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="https://www.epa.com.br/churrascometro/">Churrascômetro</a></li>
+<li id="menu-item-211" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-211"><a href="https://www.epa.com.br/lista-de-compras/">Lista de Compras</a></li>
+</ul>						</div>
+						<div class="hidden-xs col-sm-3 col-md-2 section-footer">
+							<h2 class="menu-title">Institucional</h2>
+							<ul id="menu-container" class="menu-container"><li id="menu-item-86" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-86"><a href="https://www.epa.com.br/sobre-o-epa/">Sobre o EPA</a></li>
+<li id="menu-item-85" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-85"><a href="https://www.epa.com.br/mg/acontece-no-epa/">Notícias</a></li>
+<li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="https://www.epa.com.br/fale-conosco/">Fale Conosco</a></li>
+<li id="menu-item-10135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10135"><a href="https://www.epa.com.br/trabalhe-conosco/">Trabalhe Conosco</a></li>
+<li id="menu-item-8703" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8703"><a target="_blank" href="https://grupodma.com.br/politica-privacidade.php">Lei de Proteção de Dados</a></li>
+</ul>						</div>
+						<div class="hidden-xs hidden-sm col-md-3 section-footer">
+							<h2 class="menu-title">Acompanhe o EPA nas redes sociais</h2>
+							<div class="social-networks-footer">
+								   <a href="https://www.facebook.com/epasupermercados" target="_blank">
+    <i class="sprite-icon-facebook"></i>
+</a>
+<a href="https://www.instagram.com/epasupermercados/" target="_blank">
+    <i class="sprite-icon-instagram"></i>
+</a>
+<a href="https://www.youtube.com/c/epabrsupermercados" target="_blank">
+    <i class="sprite-icon-youtube"></i>
+</a>							</div>
+						</div>
+						<div class="hidden-xs col-sm-3 col-md-3 section-footer section-footer-card">
+							<h2 class="menu-title menu-title-cartao">Cartão Fácil</h2>
+														<a href="https://www.epa.com.br/cartao-facil-epa/"><i class="sprite-arrow-right margin-right-5"></i>Faça já o seu</a>
+							<img class="card-image" src="https://www.epa.com.br/wp-content/themes/supermercado_epa/assets/images/cartao-facil.png" alt="Cartões do Cartão Fácil">
+						</div>
+						<div class="visible-xs visible-sm col-sm-12 section-footer">
+							<h2 class="menu-title">Acompanhe o EPA nas redes sociais</h2>
+							<div class="social-networks-footer">
+							      <a href="https://www.facebook.com/epasupermercados" target="_blank">
+    <i class="sprite-icon-facebook"></i>
+</a>
+<a href="https://www.instagram.com/epasupermercados/" target="_blank">
+    <i class="sprite-icon-instagram"></i>
+</a>
+<a href="https://www.youtube.com/c/epabrsupermercados" target="_blank">
+    <i class="sprite-icon-youtube"></i>
+</a>							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+</main>
+<div class="footer-dma-internal">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 padding-top-10 padding-bottom-10">
+				<div class="container">
+					<div class="row margin-0">
+						<div class="col-xs-12 col-sm-6 hidden-xs">
+														<a class="logo-dma" href="#"><i class="sprite-logo-dma"></i></a><p class="txt-c">O EPA Supermercados é uma rede da DMA Distribuidora S/A</p>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<p class="txt-c">Copyright © 2014-2016 DMA Distribuidora S/A. Todos os direitos reservados</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="https://www.epa.com.br/wp-content/plugins/cf7-cep-autofill/assets/js/cf7-cep-autofill.js?ver=1.4"></script>
+<script type="text/javascript" src="https://www.epa.com.br/wp-content/plugins/contact-form-7/includes/js/jquery.form.min.js?ver=3.51.0-2014.06.20"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var _wpcf7 = {"recaptcha":{"messages":{"empty":"Por favor, verifique se voc\u00ea n\u00e3o \u00e9 um rob\u00f4."}}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.epa.com.br/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.6.1"></script>
+<script type="text/javascript" src="https://www.epa.com.br/wp-content/themes/supermercado_epa/assets/js/required/modernizr.min.js"></script>
+<script type="text/javascript" src="https://www.epa.com.br/wp-content/themes/supermercado_epa/assets/js/project/main.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var newsletter = {"messages":{"email_error":"The email is not correct","name_error":"The name is not correct","surname_error":"The last name is not correct","privacy_error":"You must accept the privacy statement"},"profile_max":"20"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.epa.com.br/wp-content/plugins/newsletter/subscription/validate.js?ver=4.7.9"></script>
+<script type="text/javascript" src="https://www.epa.com.br/wp-includes/js/wp-embed.min.js?ver=4.7.6"></script>
+
+
