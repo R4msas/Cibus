@@ -1,10 +1,10 @@
-package APP;
+package app;
 
 import java.util.List;
 
-import DAO.DAO;
-import DAO.UsuarioDAO;
-import MODEL.Usuario;
+import dao.DAO;
+import dao.UsuarioDAO;
+import model.Usuario;
 
 public class Principal {
 public static void main(String[] args) throws Exception {

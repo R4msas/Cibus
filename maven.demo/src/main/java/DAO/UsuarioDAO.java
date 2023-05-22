@@ -1,9 +1,9 @@
-package DAO;
+package dao;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import MODEL.Usuario;
+import model.Usuario;
 public class UsuarioDAO extends DAO {
 	public UsuarioDAO() {
 		super();

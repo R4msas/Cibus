@@ -1,4 +1,4 @@
-package DAO;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.model.Supermercado;
+import model.Supermercado;
 
 public class SupermercadoDAO {
     
@@ -33,7 +33,7 @@ public class SupermercadoDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, supermercado.getNome());
             stmt.setString(2, supermercado.getSite());
-            stmt.setInt(3, supermercado.getId());
+            stmt.setInt(3, supermercado.getId_supermercado());
             stmt.executeUpdate();
         }
     }
@@ -62,7 +62,7 @@ public class SupermercadoDAO {
         }
     }
     
-    // Método para buscar todos os supermercados no banco de dados
+    /* Método para buscar todos os supermercados no banco de dados */
     public List<Supermercado> findAll() throws SQLException {
         String sql = "SELECT * FROM supermercado";
         try (PreparedStatement stmt = conn.prepareStatement(sql);
