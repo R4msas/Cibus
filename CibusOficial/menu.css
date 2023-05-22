@@ -8,13 +8,16 @@
 }
 
 body {
+    margin: 0;
+    height: 100vh;
+    width: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: url('https://cdn.discordapp.com/attachments/1008571091616276541/1104869284674547742/Guns_a_full_hd_shopping_cart_with_a_magnifying_glass_06bb7924-4370-4eb7-be0e-bc85b8bdc160.png') no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position: 0px -360px;
 
 }
 
@@ -36,6 +39,9 @@ header {
     color: #fff;
     user-select: none;
 }
+.navigation{
+    justify-content: space-between;
+}
 
 .navigation a {
     position: relative;
@@ -49,6 +55,7 @@ header {
 .navigation a::after {
     content: '';
     position: absolute;
+    top: 0;
     left: 0;
     bottom: -6px;
     width: 100%;
@@ -64,26 +71,54 @@ header {
     transform: scaleX(1)
 }
 
-.navigation .btnLogin-popup {
-    width: 130px;
-    height: 50px;
-    background: transparent;
-    border: 2px solid powderblue;
+
+
+.search-box {
+    position: absolute;
+    top: 10%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    height: 40px;
+    padding: 10px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-txt {
+    border: none;
+    background: none;
     outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: #fff;
-    font-weight: 500;
-    margin-left: 40px;
+    padding: 0;
+    color:black;
+    font-size: 16px;
+    line-height: 40px;
+    width: 0;
     transition: .5s;
 }
 
-.navigation .btnLogin-popup:hover {
-    background: #fff;
-    color: #162938;
+::-webkit-input-placeholder {
+color:gray;
 }
 
-main {
-    width: 10px;
+.search-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.search-box:hover > .search-txt {
+    width: 240px;
+padding: 0 6px;
+}
+
+.search-box:hover > .search-btn {
+    background:aquamarine;
 }
