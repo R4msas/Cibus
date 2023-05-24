@@ -9,11 +9,11 @@ import model.Oferta;
 import spark.Request;
 import spark.Response;
 
-public class OfertaService implements Service{
+public class OfertaService extends Service{
 	private OfertaDAO ofertaDAO;
 
 	public OfertaService() {
-		ofertaDAO = new OfertaDAO(null);
+		ofertaDAO = new OfertaDAO();
 
 	}
 
@@ -25,11 +25,13 @@ public class OfertaService implements Service{
 		int id_produto = Integer.parseInt(request.queryParams("bebidaVolume"));
 		String descricao = request.queryParams("bebidaDescricao").trim();
 		float preco = Float.parseFloat(request.queryParams("bebidaPreco"));
+		
+		//TROCAR AQUI EM CIMA^
 
 
 		Oferta oferta = new Oferta();
 		
-		oferta = new Oferta(id_oferta, id_supermercado, id_produto, descricao, preco);
+		oferta = new Oferta(descricao,preco,id_produto, id_supermercado,id_oferta);
 
 		ofertaDAO.add(oferta);
 
@@ -114,7 +116,7 @@ public class OfertaService implements Service{
 		response.header("Content-Type", "application/json");
 		response.header("Content-Encoding", "UTF-8");
 		
-		ofertaDAO.connect();
+		ofertaDAO.connection();
 		
 		JSONArray allProds = new JSONArray();
 		

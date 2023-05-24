@@ -25,7 +25,7 @@ public class SupermercadoService extends Service{
 
 	@Override
 	public Object add(Request request, Response response) throws URISyntaxException {
-		supermercadoDAO.connect();
+		supermercadoDAO.connection();
 		
 		int id_supermercado = Integer.parseInt(request.queryParams("idSupermercado"));
 		String nome = request.queryParams("supermercadoNome").trim();
@@ -122,7 +122,7 @@ public class SupermercadoService extends Service{
 		response.header("Content-Type", "application/json");
 		response.header("Content-Encoding", "UTF-8");
 		
-		supermercadoDAO.connect();
+		supermercadoDAO.connection();
 		
 		JSONArray allProds = new JSONArray();
 		

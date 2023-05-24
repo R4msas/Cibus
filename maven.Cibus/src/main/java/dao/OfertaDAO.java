@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +10,9 @@ import java.util.List;
 
 import model.Oferta;
 
-public class OfertaDAO {
+
+
+public class OfertaDAO extends DAO {
 
     private Connection connection;
 
@@ -17,7 +20,11 @@ public class OfertaDAO {
         this.connection = connection;
     }
 
-    public void insert(Oferta oferta) throws SQLException {
+    public OfertaDAO() {
+		
+	}
+
+	public void insert(Oferta oferta) throws SQLException {
         String sql = "INSERT INTO public.oferta (id_supermercado, id_produto, preco, descricao) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -76,6 +83,48 @@ public class OfertaDAO {
             }
         }
     }
+    
+    /*
+    
+	
+	public boolean connection() {
+		String driverName = "org.postgresql.Driver";                    
+		String serverName = "localhost";
+		String mydatabase = "Cibus";
+		int porta = 5432;
+		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
+		String username = "ti2cc";
+		String password = "ti@cc";
+		boolean status = false;
+
+		try {
+			Class.forName(driverName);
+			connection = DriverManager.getConnection(url, username, password);
+			status = (connection == null);
+			System.out.println("Conexão efetuada com o postgres!");
+		} catch (ClassNotFoundException e) { 
+			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
+		} catch (SQLException e) {
+			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
+		}
+
+		return status;
+	}
+	
+	public boolean close() {
+		boolean status = false;
+		
+		try {
+			connection.close();
+			status = true;
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		}
+		return status;
+	}
+	
+	fim teste
+	*/
 
     public List<Oferta> findAll() throws SQLException {
         String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM public.oferta";
