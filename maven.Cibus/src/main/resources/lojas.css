@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('https://cdn.discordapp.com/attachments/1008571091616276541/1104869284674547742/Guns_a_full_hd_shopping_cart_with_a_magnifying_glass_06bb7924-4370-4eb7-be0e-bc85b8bdc160.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0 rgba(50, 50, 50, 0.22);
+    padding: 20px;
+    margin: 20px;
+    width: 400px;
+    transition: all 0.3s ease-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.card .btn {
+    width: 100px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid powderblue;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+
+}
+
+.image {
+    float: right;
+    max-width: 130px;
+    height: 100px;
+}
+
+.green {
+    border-left: 5px solid green;
+}
+.blue {
+    border-left: 5px solid blue;
+}
+.red {
+    border-left: 5px solid red;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+}
+.titulo {
+    color: white;
+    font-size: xx-large;
+}
+.titulos {
+    color: white;
+    font-size: x-large;
+}
+
+
+.navigation a {
+    position: relative;
+    font-size: 1.5em;
+    color: powderblue;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navigation a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: powderblue;
+    border-radius: 5px;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform: scaleX(1)
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid powderblue;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #fff;
+    color: #162938;
+}

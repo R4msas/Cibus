@@ -14,7 +14,7 @@ import model.Supermercado;
 import spark.Request;
 import spark.Response;
 
-public class SupermercadoService implements Service{
+public class SupermercadoService extends Service{
 	private SupermercadoDAO supermercadoDAO;
 	private OfertaDAO ofertaDAO;
 
