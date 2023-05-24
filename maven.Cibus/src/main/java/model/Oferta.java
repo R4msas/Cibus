@@ -1,17 +1,6 @@
 package model;
 import java.io.File;
 import java.util.Scanner;
-/*class CriaObjeto {
-public static void main(String[] args) throws Exception{
-    ListaEncadeada lista=new ListaEncadeada();        
-    lista.criaListaDeOfertas("arquivoSupermercadoBH.txt");
-    ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
-    lista.percorreAListaEClassifica(necessitaDeClassificacao);
-    lista.imprimeTodos();
-    necessitaDeClassificacao.imprimeTodos();
-}} */  
-    
-
 public class Oferta{
     
     private String descricao;
@@ -57,13 +46,39 @@ public class Oferta{
         this.codSupermercado = codSupermercado;
         this.tipoProduto = tipoProduto;
     }
-    public Oferta() {
+    
+	public Oferta() {
         this.descricao = null;
         this.preco = 0;
-        this.codSupermercado = 0;//este construtor seta como default o código pois o código 0 é do supermercado BH
+        this.codSupermercado = 0;
         this.tipoProduto = 0;
     }
     
+    public void lerArquivo()//método público que chama a leitura do arquivo formatado
+    {	MyIO.println("Informe o número do supermercado");
+    	int supermercado=MyIO.readInt();
+    	MyIO.println("Informe o nome do arquivo de leitura:");
+		String nomeDoArquivo=MyIO.readLine();
+    	
+    	lerArquivo(nomeDoArquivo, supermercado);
+    }
+    private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception//método privado que recebe o nome do arquivo 
+    {
+    	ListaEncadeada lista=new ListaEncadeada();
+    	try {
+        lista.criaListaDeOfertas(nomeDoArquivo, supermercado);
+    	}
+    	catch(Exception e)
+    	{
+    		MyIO.println("Informe o nome correto do arquivo:");
+    		nomeDoArquivo=MyIO.readLine();
+    		lista.criaListaDeOfertas(nomeDoArquivo);
+    	}
+		ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
+        lista.percorreAListaEClassifica(necessitaDeClassificacao);
+        lista.imprimeTodos();
+        necessitaDeClassificacao.imprimeTodos();
+    }
    
     public void ler(String stringRecebida) throws Exception
     {
@@ -332,7 +347,7 @@ class ListaEncadeada{
                 removerInicio();
         }
     }
-    public void criaListaDeOfertas(String nomeDoArquivo) throws Exception
+    public void criaListaDeOfertas(String nomeDoArquivo, int supermercado) throws Exception
     {
         Scanner sc = new Scanner(new File(nomeDoArquivo));
         String stringRecebida =sc.nextLine();//inicia a primeira leitura da primeira linha
@@ -342,6 +357,7 @@ class ListaEncadeada{
         {
             Oferta nova =new Oferta();
             nova.ler(stringRecebida);
+            nova.setCodSupermercado(supermercado);
             tmp.setAtual(nova);
             inserirFinal(tmp);       
             stringRecebida = sc.nextLine();
