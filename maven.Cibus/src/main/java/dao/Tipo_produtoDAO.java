@@ -73,6 +73,6 @@ public class Tipo_produtoDAO {
         stmt.close();
         
         return tipos_produto;
-    }
-    
+    }
+    
 }
