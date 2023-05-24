@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Tipo_produto;
 
-public class Tipo_produtoDAO {
+public class Tipo_produtoDAO  extends DAO  {
     
     private Connection connection;
     

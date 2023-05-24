@@ -9,7 +9,7 @@ import java.util.List;
 
 import model.Supermercado;
 
-public class SupermercadoDAO {
+public class SupermercadoDAO  extends DAO  {
     
     private Connection connection;
     
