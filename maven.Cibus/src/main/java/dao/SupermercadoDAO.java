@@ -72,6 +72,6 @@ public class SupermercadoDAO {
                 supermercados.add(new Supermercado(rs.getInt("id_supermercado"), rs.getString("nome"), rs.getString("site")));
             }
             return supermercados;
-        }
-    }
+}
+}
 }

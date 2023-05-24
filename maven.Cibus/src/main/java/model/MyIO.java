@@ -1,3 +1,5 @@
+package model; 
+
 import java.io.*;
 import java.nio.charset.*;
 
@@ -248,5 +250,5 @@ class MyIO {
          out.print(str);
       }catch(UnsupportedEncodingException e){ System.out.println("Erro: charset invalido"); }
       pause();
+      }
    }
-}

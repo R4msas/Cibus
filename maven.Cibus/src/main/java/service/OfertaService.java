@@ -13,7 +13,7 @@ public class OfertaService implements Service{
 	private OfertaDAO ofertaDAO;
 
 	public OfertaService() {
-		ofertaDAO = new OfertaDAO();
+		ofertaDAO = new OfertaDAO(null);
 
 	}
 

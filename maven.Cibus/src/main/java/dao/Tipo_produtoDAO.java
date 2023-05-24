@@ -71,8 +71,6 @@ public class Tipo_produtoDAO {
         
         rs.close();
         stmt.close();
-        
         return tipos_produto;
-    }
-    
-}
+        }
+    }

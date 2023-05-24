@@ -71,7 +71,7 @@ public class Oferta{
         this.id_oferta = 0;
     }
     
-    public void lerArquivo() throws Exception//método público que chama a leitura do arquivo formatado
+    public void lerArquivo() throws Exception
     {	MyIO.println("Informe o número do supermercado");
     	int supermercado=MyIO.readInt();
     	MyIO.println("Informe o nome do arquivo de leitura:");
@@ -79,7 +79,7 @@ public class Oferta{
     	
     	lerArquivo(nomeDoArquivo, supermercado);
     }
-    private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception//método privado que recebe o nome do arquivo 
+    private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception
     {
     	ListaEncadeada lista=new ListaEncadeada();
     	try {
@@ -107,7 +107,7 @@ public class Oferta{
             
     }
 
-    public int classificaTipo()//efetua a comparação da descrição com termos comuns de produtos, caso seja possível retorna o inteiro para setTipo, do contrário retorna -1
+    public int classificaTipo()
     {
         String carne[]={"carne", "acem", "acém", "paleta", "costela", "picanha", "chã de", "costelinha","hamburguer","linguica","linguiça","file","filé","salsicha","empanado"};
         String bebidaAlcolica[]={"whisky","vinho","vodka","cachaça","cachaca","rum"};
@@ -340,26 +340,25 @@ class ListaEncadeada{
         ultimo=temporaria;
         return resposta;
     }
-    public void percorreAListaEClassifica(ListaEncadeada necessitaDeClassificacao)//percorre a lista de e classifica e chama a função que classifica cada oferta
+    public void percorreAListaEClassifica(ListaEncadeada necessitaDeClassificacao)
     {            
         necessitaDeClassificacao.ultimo=necessitaDeClassificacao.primeiro=new Celula();
         Celula tmp=primeiro;
-        while(tmp.getProx()!=null||tmp==ultimo)//percorre por toda a lista encadeada
+        while(tmp.getProx()!=null||tmp==ultimo)
         {
             tmp=primeiro.getProx();
             int tipoProduto=tmp.getAtual().classificaTipo();
             
-             if(tipoProduto==-1)//se o tipo de produto não for inserido, altera para -1 e guarda na lista em que é necessário inserir manualmente
+             if(tipoProduto==-1)
             {
                 Celula temp=new Celula();
                 temp.setAtual(tmp.getAtual());
-                necessitaDeClassificacao.inserirFinal(temp);//insere no final da lista
+                necessitaDeClassificacao.inserirFinal(temp);
             }
             else{
                 Celula temp2=new Celula();
                 temp2.setAtual(tmp.getAtual());
-                temp2.getAtual().setTipoProduto(tipoProduto);
-                //enviar para o banco de dados  
+                temp2.getAtual().setTipoProduto(tipoProduto); 
                 } 
                 removerInicio();
         }
@@ -367,10 +366,10 @@ class ListaEncadeada{
     public void criaListaDeOfertas(String nomeDoArquivo, int supermercado) throws Exception
     {
         Scanner sc = new Scanner(new File(nomeDoArquivo));
-        String stringRecebida =sc.nextLine();//inicia a primeira leitura da primeira linha
+        String stringRecebida =sc.nextLine();
         Celula tmp=new Celula();
-        primeiro=ultimo=new Celula();//primeiro e último apontam para a mesma célula.
-        while (sc.hasNextLine())//enquanto houver uma nova linha lerá o arquivo, gerando um novo objeto da classe Oferta
+        primeiro=ultimo=new Celula();
+        while (sc.hasNextLine())
         {
             Oferta nova =new Oferta();
             nova.ler(stringRecebida);
@@ -382,7 +381,7 @@ class ListaEncadeada{
         }
         sc.close();
     }
-    public void imprimeTodos()//falta definir a forma de impressão
+    public void imprimeTodos()
     {
         Celula tmp=primeiro;
         while(tmp.getProx()!=null)
@@ -393,6 +392,6 @@ class ListaEncadeada{
             MyIO.println("Codigo do supermercado:"+tmp.getAtual().getCodSupermercado());
             MyIO.println("Tipo de produto:"+tmp.getAtual().getTipoProduto());
             MyIO.println("Preco:"+tmp.getAtual().getPreco());
-        }
-    }
-}
+            }
+        }
+    }

@@ -94,10 +94,8 @@ public class OfertaDAO {
 
                     ofertas.add(oferta);
                 }
-
                 return ofertas;
+                }
             }
-        }
-    }
-
-}
+        }
+    }
