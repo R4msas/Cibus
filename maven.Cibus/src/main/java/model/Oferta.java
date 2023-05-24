@@ -54,7 +54,7 @@ public class Oferta{
         this.tipoProduto = 0;
     }
     
-    public void lerArquivo()//método público que chama a leitura do arquivo formatado
+    public void lerArquivo() throws Exception//método público que chama a leitura do arquivo formatado
     {	MyIO.println("Informe o número do supermercado");
     	int supermercado=MyIO.readInt();
     	MyIO.println("Informe o nome do arquivo de leitura:");
@@ -72,7 +72,7 @@ public class Oferta{
     	{
     		MyIO.println("Informe o nome correto do arquivo:");
     		nomeDoArquivo=MyIO.readLine();
-    		lista.criaListaDeOfertas(nomeDoArquivo);
+    		lista.criaListaDeOfertas(nomeDoArquivo, supermercado);
     	}
 		ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
         lista.percorreAListaEClassifica(necessitaDeClassificacao);
