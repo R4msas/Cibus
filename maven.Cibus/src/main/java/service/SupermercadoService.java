@@ -14,7 +14,7 @@ import model.Supermercado;
 import spark.Request;
 import spark.Response;
 
-public class SupermercadoService extends Service{
+public class SupermercadoService implements Service{
 	private SupermercadoDAO supermercadoDAO;
 	private OfertaDAO ofertaDAO;
 
@@ -25,7 +25,7 @@ public class SupermercadoService extends Service{
 
 	@Override
 	public Object add(Request request, Response response) throws URISyntaxException {
-		supermercadoDAO.connection();
+		supermercadoDAO.connect();
 		
 		int id_supermercado = Integer.parseInt(request.queryParams("idSupermercado"));
 		String nome = request.queryParams("supermercadoNome").trim();
@@ -122,7 +122,7 @@ public class SupermercadoService extends Service{
 		response.header("Content-Type", "application/json");
 		response.header("Content-Encoding", "UTF-8");
 		
-		supermercadoDAO.connection();
+		supermercadoDAO.connect();
 		
 		JSONArray allProds = new JSONArray();
 		

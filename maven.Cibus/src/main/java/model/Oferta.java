@@ -1,8 +1,16 @@
 package model;
 import java.io.File;
+import java.sql.SQLException;
 import java.util.Scanner;
+import dao.OfertaDAO;
 
 public class Oferta{
+public static void main(String[] args) throws Exception {
+	ListaEncadeada lista=new ListaEncadeada();
+	lista.lerArquivo();
+        
+    }
+	
     
     private String descricao;
     private int id_oferta;
@@ -71,32 +79,7 @@ public class Oferta{
         this.id_oferta = 0;
     }
     
-    public void lerArquivo() throws Exception
-    {	MyIO.println("Informe o número do supermercado");
-    	int supermercado=MyIO.readInt();
-    	MyIO.println("Informe o nome do arquivo de leitura:");
-		String nomeDoArquivo=MyIO.readLine();
-    	
-    	lerArquivo(nomeDoArquivo, supermercado);
-    }
-    private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception
-    {
-    	ListaEncadeada lista=new ListaEncadeada();
-    	try {
-        lista.criaListaDeOfertas(nomeDoArquivo, supermercado);
-    	}
-    	catch(Exception e)
-    	{
-    		MyIO.println("Informe o nome correto do arquivo:");
-    		nomeDoArquivo=MyIO.readLine();
-    		lista.criaListaDeOfertas(nomeDoArquivo, supermercado);
-    	}
-		ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
-        lista.percorreAListaEClassifica(necessitaDeClassificacao);
-        lista.imprimeTodos();
-        necessitaDeClassificacao.imprimeTodos();
-    }
-   
+        
     public void ler(String stringRecebida) throws Exception
     {
             String[] keyValue = stringRecebida.split(":");
@@ -149,7 +132,7 @@ public class Oferta{
             if(stringRecebida.contains(carne[posicao]))
             {
                 possuiPosicao=true;
-                tipoProduto=0;
+                tipoProduto=1;
             }
             else{
             posicao++;
@@ -320,6 +303,45 @@ class ListaEncadeada{
         tmp=null;
 
     }
+    public void lerArquivo() throws Exception
+    {	MyIO.println("Informe o número do supermercado");
+    	int supermercado=MyIO.readInt();
+    	MyIO.println("Informe o nome do arquivo de leitura:");
+		String nomeDoArquivo=MyIO.readLine();
+    	lerArquivo(nomeDoArquivo, supermercado);
+    }
+    private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception
+    {
+    	
+    	
+        criaListaDeOfertas(nomeDoArquivo, supermercado);
+    	
+		ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
+		ListaEncadeada classificada=new ListaEncadeada();
+        percorreAListaEClassifica(necessitaDeClassificacao,classificada);
+        classificada.enviaBD();
+    }
+    public void enviaBD() //percorre a lista encadeada e envia os objetos Oferta para o BD
+    {
+        Celula tmp=primeiro;
+    	OfertaDAO bd = new OfertaDAO();
+		//bd.connection();
+        while(tmp.getProx()!=null)
+        {
+        
+            tmp=tmp.getProx();//percorre a lista
+            try {
+			bd.insert(tmp.getAtual());
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				
+				bd.close();
+				e.printStackTrace();
+			}
+           
+        }
+        bd.close();
+    }
    public Oferta removerInicio()  {
         if(primeiro.getProx()==ultimo)
         {
@@ -340,9 +362,10 @@ class ListaEncadeada{
         ultimo=temporaria;
         return resposta;
     }
-    public void percorreAListaEClassifica(ListaEncadeada necessitaDeClassificacao)
+    public void percorreAListaEClassifica(ListaEncadeada necessitaDeClassificacao,ListaEncadeada classificada)
     {            
         necessitaDeClassificacao.ultimo=necessitaDeClassificacao.primeiro=new Celula();
+        classificada.ultimo=classificada.primeiro=new Celula();
         Celula tmp=primeiro;
         while(tmp.getProx()!=null||tmp==ultimo)
         {
@@ -358,7 +381,8 @@ class ListaEncadeada{
             else{
                 Celula temp2=new Celula();
                 temp2.setAtual(tmp.getAtual());
-                temp2.getAtual().setTipoProduto(tipoProduto); 
+                temp2.getAtual().setTipoProduto(tipoProduto);
+                classificada.inserirFinal(temp2);
                 } 
                 removerInicio();
         }

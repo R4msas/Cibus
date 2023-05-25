@@ -1,7 +1,7 @@
 package dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
+//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,19 +14,22 @@ import model.Oferta;
 
 public class OfertaDAO extends DAO {
 
-    private Connection connection;
+    private Connection conn;
+	public Object OfertaDAO;
 
     public OfertaDAO(Connection connection) {
         this.connection = connection;
     }
 
     public OfertaDAO() {
+    	super();
+    	connection();
 		
 	}
 
 	public void insert(Oferta oferta) throws SQLException {
-        String sql = "INSERT INTO public.oferta (id_supermercado, id_produto, preco, descricao) VALUES (?, ?, ?, ?)";
-
+        String sql = "INSERT INTO oferta (id_supermercado, id_produto, preco, descricao) VALUES (?, ?, ?, ?)";
+        //connection();
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, oferta.getCodSupermercado());
             statement.setInt(2, oferta.getTipoProduto());
