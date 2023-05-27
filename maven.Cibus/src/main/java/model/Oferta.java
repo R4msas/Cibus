@@ -3,12 +3,15 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.Scanner;
 import dao.OfertaDAO;
+import org.json.JSONObject;
+import service.OfertaService;
 
 public class Oferta{
 public static void main(String[] args) throws Exception {
-	ListaEncadeada lista=new ListaEncadeada();
-	lista.lerArquivo();
-        
+	//ListaEncadeada lista=new ListaEncadeada();
+	//lista.lerArquivo();
+	//OfertaDAO teste=new OfertaDAO();
+    //teste.OfertaDAO.getAll();    
     }
 	
     
@@ -17,6 +20,28 @@ public static void main(String[] args) throws Exception {
 	private float preco;
     private int codSupermercado;
     private int tipoProduto;
+    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.codSupermercado = codSupermercado;
+        this.tipoProduto = tipoProduto;
+    }
+    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto, int id_oferta) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.codSupermercado = codSupermercado;
+        this.tipoProduto = tipoProduto;
+        this.id_oferta = id_oferta;
+    }
+    
+    
+	public Oferta() {
+        this.descricao = null;
+        this.preco = 0;
+        this.codSupermercado = 0;
+        this.tipoProduto = 0;
+        this.id_oferta = 0;
+    }
     
     public int getId_oferta() {
 		return id_oferta;
@@ -56,28 +81,7 @@ public static void main(String[] args) throws Exception {
     {
         this.codSupermercado = codSupermercado;
     }
-    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
-        this.descricao = descricao;
-        this.preco = preco;
-        this.codSupermercado = codSupermercado;
-        this.tipoProduto = tipoProduto;
-    }
-    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto, int id_oferta) {
-        this.descricao = descricao;
-        this.preco = preco;
-        this.codSupermercado = codSupermercado;
-        this.tipoProduto = tipoProduto;
-        this.id_oferta = id_oferta;
-    }
     
-    
-	public Oferta() {
-        this.descricao = null;
-        this.preco = 0;
-        this.codSupermercado = 0;
-        this.tipoProduto = 0;
-        this.id_oferta = 0;
-    }
     
         
     public void ler(String stringRecebida) throws Exception
@@ -262,6 +266,16 @@ public static void main(String[] args) throws Exception {
 
 return tipoProduto;
     }
+    
+    public JSONObject toJson() {
+		JSONObject obj = new JSONObject();
+		obj.put("id_oferta", this.getId_oferta());
+		obj.put("descricao", this.getDescricao());
+		obj.put("preco", this.getPreco());
+		obj.put("codSupermercado", this.getCodSupermercado());
+		obj.put("tipoProduto", this.getTipoProduto());
+		return obj;
+	}
 }
 class Celula{
     private Oferta atual;
@@ -308,7 +322,7 @@ class ListaEncadeada{
     	int supermercado=MyIO.readInt();
     	MyIO.println("Informe o nome do arquivo de leitura:");
 		String nomeDoArquivo=MyIO.readLine();
-    	lerArquivo(nomeDoArquivo, supermercado);
+    	lerArquivo("src\\main\\resources\\"+nomeDoArquivo, supermercado);
     }
     private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception
     {
@@ -342,7 +356,7 @@ class ListaEncadeada{
         }
         bd.close();
     }
-   public Oferta removerInicio()  {
+    public Oferta removerInicio()  {
         if(primeiro.getProx()==ultimo)
         {
             ultimo=primeiro;

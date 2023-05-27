@@ -11,7 +11,7 @@ protected Connection connection;
 		connection = null;
 	}
 	
-	public boolean connection() {
+	public boolean connect() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
 		String mydatabase = "Cibus";

@@ -43,7 +43,7 @@ public class SupermercadoService implements Service{
 
 	@Override
 	public Object get(Request request, Response response) throws URISyntaxException {
-		supermercadoDAO.connection();
+		supermercadoDAO.connect();
 		
 		int id_supermercado = Integer.parseInt(request.queryParams("idSupermercado"));
 
@@ -70,7 +70,7 @@ public class SupermercadoService implements Service{
 
 	@Override
 	public Object update(Request request, Response response) throws Exception, Throwable {
-		supermercadoDAO.connection();
+		supermercadoDAO.connect();
 		
 		int id = Integer.parseInt(request.params(":idSupermercado"));
 
@@ -95,7 +95,7 @@ public class SupermercadoService implements Service{
 
 	@Override
 	public Object remove(Request request, Response response) throws URISyntaxException {
-		supermercadoDAO.connection();
+		supermercadoDAO.connect();
 	
 		int id = Integer.parseInt(request.params(":idSupermercado"));
 		System.out.println("id = " + id);
@@ -143,8 +143,8 @@ public class SupermercadoService implements Service{
 		
 		int id = Integer.parseInt(request.params(":idComprador"));
 		
-		supermercadoDAO.connection();
-		ofertaDAO.connection();
+		supermercadoDAO.connect();
+		ofertaDAO.connect();
 		
 		JSONArray allProds = new JSONArray();
 		

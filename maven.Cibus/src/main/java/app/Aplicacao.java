@@ -1,25 +1,26 @@
 package app;
 import static spark.Spark.*;
+import service.OfertaService;
 public class Aplicacao {
 	
-	private static OfertaService produtoService = new ProdutoService();
+	private static OfertaService oferta = new OfertaService();
 	
     public static void main(String[] args) {
-        port(6789);
+        port(5500);
         
-        staticFiles.location("/public");
+       // staticFiles.location("/public");
         
-        post("/produto/insert", (request, response) -> produtoService.insert(request, response));
+        //post("/produto/insert", (request, response) -> oferta.insert(request, response));
 
-        get("/produto/:id", (request, response) -> produtoService.get(request, response));
+       // get("/produto/:id", (request, response) -> oferta.get(request, response));
         
-        get("/produto/list/:orderby", (request, response) -> produtoService.getAll(request, response));
+        get("/", (request, response) -> oferta.getAll(request, response));
 
-        get("/produto/update/:id", (request, response) -> produtoService.getToUpdate(request, response));
+        //get("/produto/update/:id", (request, response) -> oferta.getToUpdate(request, response));
         
-        post("/produto/update/:id", (request, response) -> produtoService.update(request, response));
+       // post("/produto/update/:id", (request, response) -> oferta.update(request, response));
            
-        get("/produto/delete/:id", (request, response) -> produtoService.delete(request, response));
+       // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
 
              
     }

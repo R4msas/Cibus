@@ -23,7 +23,7 @@ public class OfertaDAO extends DAO {
 
     public OfertaDAO() {
     	super();
-    	connection();
+    	connect();
 		
 	}
 
@@ -41,7 +41,7 @@ public class OfertaDAO extends DAO {
     }
 
     public void update(Oferta oferta) throws SQLException {
-        String sql = "UPDATE public.oferta SET id_supermercado = ?, id_produto = ?, preco = ?, descricao = ? WHERE id_oferta = ?";
+        String sql = "UPDATE oferta SET id_supermercado = ?, id_produto = ?, preco = ?, descricao = ? WHERE id_oferta = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, oferta.getCodSupermercado());
@@ -55,7 +55,7 @@ public class OfertaDAO extends DAO {
     }
 
     public void delete(Oferta oferta) throws SQLException {
-        String sql = "DELETE FROM public.oferta WHERE id_oferta = ?";
+        String sql = "DELETE FROM oferta WHERE id_oferta = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, oferta.getId_oferta());
@@ -65,7 +65,7 @@ public class OfertaDAO extends DAO {
     }
 
     public Oferta findById(int id) throws SQLException {
-        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM public.oferta WHERE id_oferta = ?";
+        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE id_oferta = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
@@ -129,8 +129,8 @@ public class OfertaDAO extends DAO {
 	fim teste
 	*/
 
-    public List<Oferta> findAll() throws SQLException {
-        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM public.oferta";
+    public List<Oferta> getAll() throws SQLException {
+        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             try (ResultSet result = statement.executeQuery()) {
