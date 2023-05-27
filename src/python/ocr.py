@@ -11,7 +11,12 @@ img=cv2.imread("pageEpa0.jpg")
 texto+=pytesseract.image_to_string(img)
 img=cv2.imread("pageEpa1.jpg")
 texto+=pytesseract.image_to_string(img)
+img=cv2.imread("pageEpa2.jpg")
+texto+=pytesseract.image_to_string(img)
+img=cv2.imread("pageEpa3.jpg")
+texto+=pytesseract.image_to_string(img)
 texto2=texto.strip('\n')
 with open("respEpa.txt","w",encoding="utf-8") as f:
     f.write(texto2)
-    
+
+print("fim da leitura")
