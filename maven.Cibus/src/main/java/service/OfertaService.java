@@ -34,4 +34,23 @@ public Object getAll(Request request, Response response) throws URISyntaxExcepti
 				
 	return arrayDeOfertas;
 }
+public Object getPorTipo(Request request, Response response) throws URISyntaxException, SQLException {				
+	
+	
+	ofertaDAO.connect();
+	int id =Integer.parseInt(request.params(":id"));
+	System.out.println(id);
+	String pesquisa=request.params(":pesquisa");
+	System.out.println(request.queryParams());
+	JSONArray arrayDeOfertas = new JSONArray();
+	
+	for (Oferta o : ofertaDAO.getPorTipo(id, pesquisa)) {
+		Oferta oferta = (Oferta)o;
+		arrayDeOfertas.put(oferta.toJson());
+	}
+	
+	ofertaDAO.close();
+				
+	return arrayDeOfertas;
+}
 }

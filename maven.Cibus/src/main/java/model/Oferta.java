@@ -1,17 +1,31 @@
 package model;
 import java.io.File;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import dao.OfertaDAO;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 import service.OfertaService;
 
 public class Oferta{
 public static void main(String[] args) throws Exception {
-	//ListaEncadeada lista=new ListaEncadeada();
-	//lista.lerArquivo();
-	//OfertaDAO teste=new OfertaDAO();
-    //teste.OfertaDAO.getAll();    
+	ListaEncadeada lista=new ListaEncadeada();
+	lista.lerArquivo();
+	OfertaDAO ofertaDAO=new OfertaDAO();
+	
+	JSONArray arrayDeOfertas = new JSONArray();
+	
+	for (Oferta o : ofertaDAO.getAll()) {
+		Oferta oferta = (Oferta)o;
+		arrayDeOfertas.put(oferta.toJson());
+	}
+
+	ofertaDAO.close();
+	System.out.println(arrayDeOfertas);
+    
     }
 	
     
@@ -97,7 +111,7 @@ public static void main(String[] args) throws Exception {
     public int classificaTipo()
     {
         String carne[]={"carne", "acem", "acém", "paleta", "costela", "picanha", "chã de", "costelinha","hamburguer","linguica","linguiça","file","filé","salsicha","empanado"};
-        String bebidaAlcolica[]={"whisky","vinho","vodka","cachaça","cachaca","rum"};
+        String bebidaAlcolica[]={"whisky"," vinho","vodka","cachaça","cachaca"};
         String macarrao[]={"macarrao","noodle","massa"};
         String refrigerante[]={"refrigerante", "coca-cola","pepsi","fanta"};
         String bolacha[]={"bolacha","biscoito"};

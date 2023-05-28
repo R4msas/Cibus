@@ -1,20 +1,36 @@
 package app;
 import static spark.Spark.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import service.OfertaService;
+
+import spark.ModelAndView;
+import spark.template.velocity.VelocityTemplateEngine;
 public class Aplicacao {
 	
-	private static OfertaService oferta = new OfertaService();
+	//private static OfertaService oferta = new OfertaService();
 	
     public static void main(String[] args) {
-        port(5500);
+        port(6789);
+        //staticFiles.externalLocation("C:\\Users\\Allan\\Documents\\python\\maven.Cibus\\src\\main\\resources\\public");
+        staticFiles.location("/public");
+        OfertaService ofertaService=new OfertaService();
         
-       // staticFiles.location("/public");
+        get("", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new VelocityTemplateEngine().render(
+                new ModelAndView(model, "menu.html")
+            );
+            
+        });
+        
+        //get("", (request, response) -> oferta.getAll(request, response));
         
         //post("/produto/insert", (request, response) -> oferta.insert(request, response));
-
-       // get("/produto/:id", (request, response) -> oferta.get(request, response));
-        
-        get("/", (request, response) -> oferta.getAll(request, response));
+        get("/tipo/:id/pesquisa/:pesquisa", (request, response) -> ofertaService.getPorTipo(request, response));
+        get("/all", (request, response) -> ofertaService.getAll(request, response));
 
         //get("/produto/update/:id", (request, response) -> oferta.getToUpdate(request, response));
         
