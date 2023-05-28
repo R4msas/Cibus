@@ -57,11 +57,10 @@ function carrega(){
     fetch(url)
     .then (res=>res.json())
     .then (data =>{
-      console.log(data);
-      let jsonOferta=data;
       let str = ''
-          for (let i = 0; i < jsonOferta.length; i++) {
-            let oferta = data.results[i]
+          console.log(data)
+          for (let i = 0; i < data.length; i++) {
+            let oferta=data[i];
             str += `        <div class="card-body">
                             <h5 class="card-title">${oferta.descricao}</h5>
                             <p>Preço:${oferta.preco}</p>
