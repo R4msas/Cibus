@@ -87,48 +87,6 @@ public class OfertaDAO extends DAO {
         }
     }
     
-    /*
-    
-	
-	public boolean connection() {
-		String driverName = "org.postgresql.Driver";                    
-		String serverName = "localhost";
-		String mydatabase = "Cibus";
-		int porta = 5432;
-		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-		String username = "ti2cc";
-		String password = "ti@cc";
-		boolean status = false;
-
-		try {
-			Class.forName(driverName);
-			connection = DriverManager.getConnection(url, username, password);
-			status = (connection == null);
-			System.out.println("Conexão efetuada com o postgres!");
-		} catch (ClassNotFoundException e) { 
-			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
-		} catch (SQLException e) {
-			System.err.println("Conexão NÃO efetuada com o postgres -- " + e.getMessage());
-		}
-
-		return status;
-	}
-	
-	public boolean close() {
-		boolean status = false;
-		
-		try {
-			connection.close();
-			status = true;
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
-		}
-		return status;
-	}
-	
-	fim teste
-	*/
-
     public List<Oferta> getAll() throws SQLException {
         String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta";
 
@@ -150,4 +108,26 @@ public class OfertaDAO extends DAO {
                 }
             }
         }
-    }
+    public List<Oferta> getPorTipo(int id, String pesquisa) throws SQLException {
+        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE id_produto =? AND DESCRICAO ILIKE ? ";
+        
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            statement.setString(2,"%"+pesquisa+"%");
+            try (ResultSet result = statement.executeQuery()) {
+                List<Oferta> ofertas = new ArrayList<>();
+
+                while (result.next()) {
+                    Oferta oferta = new Oferta();
+                    oferta.setId_oferta(result.getInt("id_oferta"));
+                    oferta.setCodSupermercado(result.getInt("id_supermercado"));
+                    oferta.setTipoProduto(result.getInt("id_produto"));
+                    oferta.setPreco(result.getFloat("preco"));
+                    oferta.setDescricao(result.getString("descricao"));
+
+                    ofertas.add(oferta);
+                }
+                return ofertas;
+                }
+            }
+    }}
