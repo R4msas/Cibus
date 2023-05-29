@@ -3,7 +3,7 @@ import static spark.Spark.*;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import model.Oferta;
 import service.OfertaService;
 
 import spark.ModelAndView;
@@ -13,10 +13,11 @@ public class Aplicacao {
 	//private static OfertaService oferta = new OfertaService();
 	
     public static void main(String[] args) {
-        port(6789);
+        port(8085);
         //staticFiles.externalLocation("C:\\Users\\Allan\\Documents\\python\\maven.Cibus\\src\\main\\resources\\public");
         staticFiles.location("/public");
         OfertaService ofertaService=new OfertaService();
+        
         
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -38,6 +39,7 @@ public class Aplicacao {
            
        // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
 
+        
              
     }
 }
