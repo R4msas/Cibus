@@ -3,7 +3,7 @@ import static spark.Spark.*;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import model.Oferta;
 import service.OfertaService;
 
 import spark.ModelAndView;
@@ -18,6 +18,7 @@ public class Aplicacao {
         staticFiles.location("/public");
         OfertaService ofertaService=new OfertaService();
         
+        
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new VelocityTemplateEngine().render(
@@ -26,7 +27,7 @@ public class Aplicacao {
             
         });
         
-        //get("", (request, response) -> oferta.getAll(request, response));
+        get("/pesquisa/:pesquisa", (request, response) -> ofertaService.getPesquisaOfertas(request, response));
         
         //post("/produto/insert", (request, response) -> oferta.insert(request, response));
         get("/tipo/:id/pesquisa/:pesquisa", (request, response) -> ofertaService.getPorTipo(request, response));
@@ -38,6 +39,7 @@ public class Aplicacao {
            
        // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
 
+        
              
     }
 }

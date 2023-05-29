@@ -40,6 +40,7 @@ public class OfertaDAO extends DAO {
         }
     }
 
+   /* 
     public void update(Oferta oferta) throws SQLException {
         String sql = "UPDATE oferta SET id_supermercado = ?, id_produto = ?, preco = ?, descricao = ? WHERE id_oferta = ?";
 
@@ -52,9 +53,9 @@ public class OfertaDAO extends DAO {
 
             statement.executeUpdate();
         }
-    }
+    }*/
 
-    public void delete(Oferta oferta) throws SQLException {
+    /*public void delete(Oferta oferta) throws SQLException {
         String sql = "DELETE FROM oferta WHERE id_oferta = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -62,9 +63,9 @@ public class OfertaDAO extends DAO {
 
             statement.executeUpdate();
         }
-    }
+    }*/
 
-    public Oferta findById(int id) throws SQLException {
+  /*  public Oferta findById(int id) throws SQLException {
         String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE id_oferta = ?";
 
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -85,8 +86,8 @@ public class OfertaDAO extends DAO {
                 }
             }
         }
-    }
-    
+    }*/
+    //esta função busca todas as ofertas do banco e retorna uma lista de ofertas
     public List<Oferta> getAll() throws SQLException {
         String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta";
 
@@ -108,6 +109,7 @@ public class OfertaDAO extends DAO {
                 }
             }
         }
+    //esta função recebe a id_produto e uma string de pesquisa e retorna uma lista de ofertas que sigam esta consulta SQL
     public List<Oferta> getPorTipo(int id, String pesquisa) throws SQLException {
         String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE id_produto =? AND DESCRICAO ILIKE ? ";
         
@@ -130,4 +132,27 @@ public class OfertaDAO extends DAO {
                 return ofertas;
                 }
             }
+    }
+    //busca na tabela de ofertas uma string, caso tenha, retorna uma lista de ofertas
+        public List<Oferta> getPesquisaOferta(String pesquisa) throws SQLException {
+            String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE DESCRICAO ILIKE ? ";
+            
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1,"%"+pesquisa+"%");
+                try (ResultSet result = statement.executeQuery()) {
+                    List<Oferta> ofertas = new ArrayList<>();
+
+                    while (result.next()) {
+                        Oferta oferta = new Oferta();
+                        oferta.setId_oferta(result.getInt("id_oferta"));
+                        oferta.setCodSupermercado(result.getInt("id_supermercado"));
+                        oferta.setTipoProduto(result.getInt("id_produto"));
+                        oferta.setPreco(result.getFloat("preco"));
+                        oferta.setDescricao(result.getString("descricao"));
+
+                        ofertas.add(oferta);
+                    }
+                    return ofertas;
+                    }
+                }
     }}
