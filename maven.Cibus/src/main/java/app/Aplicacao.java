@@ -13,7 +13,7 @@ public class Aplicacao {
 	//private static OfertaService oferta = new OfertaService();
 	
     public static void main(String[] args) {
-        port(8085);
+        port(6789);
         //staticFiles.externalLocation("C:\\Users\\Allan\\Documents\\python\\maven.Cibus\\src\\main\\resources\\public");
         staticFiles.location("/public");
         OfertaService ofertaService=new OfertaService();
@@ -27,7 +27,7 @@ public class Aplicacao {
             
         });
         
-        //get("", (request, response) -> oferta.getAll(request, response));
+        get("/pesquisa/:pesquisa", (request, response) -> ofertaService.getPesquisaOfertas(request, response));
         
         //post("/produto/insert", (request, response) -> oferta.insert(request, response));
         get("/tipo/:id/pesquisa/:pesquisa", (request, response) -> ofertaService.getPorTipo(request, response));

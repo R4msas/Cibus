@@ -34,6 +34,7 @@ public static void main(String[] args) throws Exception {
 	private float preco;
     private int codSupermercado;
     private int tipoProduto;
+    //construtor 
     public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
         this.descricao = descricao;
         this.preco = preco;
