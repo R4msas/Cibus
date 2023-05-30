@@ -12,7 +12,7 @@ import model.TipoProduto;
 
 public class TipoProdutoDAO  extends DAO  {
     
-    private Connection connection;
+    private Connection conn;
     
     public TipoProdutoDAO(Connection connection) {
         this.connection = connection;

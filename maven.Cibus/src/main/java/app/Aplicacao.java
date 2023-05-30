@@ -41,8 +41,8 @@ public class Aplicacao {
        // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
         
         //TIPO PRODUTO:
-        get("/inserttipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
-
+        get("/insertTipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
+        post("/insertTipo/", (request, response) -> tipo_produtoservice.insertPostTipo_produto(request, response));
         //SUPERMERCADO
              
     }

@@ -2,6 +2,7 @@ package service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -21,12 +22,31 @@ public class TipoProdutoService {
         this.tipoProdutoDAO = new TipoProdutoDAO();
     }
 
-    public Object insertTipo_produto(Request request, Response response) throws URISyntaxException {
+    public Object insertTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
 
         tipoProdutoDAO.connect();
 
         String nome = request.params(":nome");
 
+        TipoProduto tipoProduto = new TipoProduto(nome);
+        System.out.println(tipoProduto.getNome());
+        
+        tipoProdutoDAO.insertTipoProduto(tipoProduto);
+
+        response.status(201); // created
+        response.redirect("../menu.html");
+
+
+
+        tipoProdutoDAO.close();
+        
+        return(null);
+    }
+    public Object insertPostTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
+
+        tipoProdutoDAO.connect();
+
+        String nome = request.queryParams("nome");
         TipoProduto tipoProduto = new TipoProduto(nome);
         System.out.println(tipoProduto.getNome());
         
