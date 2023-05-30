@@ -40,10 +40,10 @@ public class Aplicacao {
            
        // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
         
-        
+        //TIPO PRODUTO:
         get("/inserttipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
 
-        
+        //SUPERMERCADO
              
     }
 }

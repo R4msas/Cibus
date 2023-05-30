@@ -28,8 +28,9 @@ public class TipoProdutoService {
         String nome = request.params(":nome");
 
         TipoProduto tipoProduto = new TipoProduto(nome);
-
-        tipoProdutoDAO.insert(tipoProduto);
+        System.out.println(tipoProduto.getNome());
+        
+        tipoProdutoDAO.insertTipoProduto(tipoProduto);
 
         response.status(201); // created
         response.redirect("../menu.html");
