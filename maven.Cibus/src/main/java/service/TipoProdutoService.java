@@ -15,31 +15,29 @@ import java.util.Random;
 import javax.servlet.*;
 
 public class TipoProdutoService {
-    private TipoProduto tipoProdutoDAO;
+    private TipoProdutoDAO tipoProdutoDAO;
 
     public TipoProdutoService() {
         this.tipoProdutoDAO = new TipoProdutoDAO();
     }
 
-    public Object add(Request request, Response response) throws URISyntaxException {
+    public Object insertTipo_produto(Request request, Response response) throws URISyntaxException {
 
         tipoProdutoDAO.connect();
 
-        int id_produto = Integer.parseInt(request.queryParams("id_produto"));
+        String nome = request.params(":nome");
 
-        String nome = request.queryParams("nome");
+        TipoProduto tipoProduto = new TipoProduto(nome);
 
-        TipoProduto tipoProduto = new TipoProduto(id_produto, nome);
-
-        tipoProdutoDAO.add(tipoProduto);
+        tipoProdutoDAO.insert(tipoProduto);
 
         response.status(201); // created
-        response.redirect("../index.html");
+        response.redirect("../menu.html");
 
-        int idMax = tipoProdutoDAO.getIdMax();
+
 
         tipoProdutoDAO.close();
-
-        return idMax;
+        
+        return(null);
     }
 }

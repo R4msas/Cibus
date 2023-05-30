@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import model.Oferta;
 import service.OfertaService;
+import service.TipoProdutoService;
 
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -17,7 +18,7 @@ public class Aplicacao {
         //staticFiles.externalLocation("C:\\Users\\Allan\\Documents\\python\\maven.Cibus\\src\\main\\resources\\public");
         staticFiles.location("/public");
         OfertaService ofertaService=new OfertaService();
-        
+        TipoProdutoService tipo_produtoservice = new TipoProdutoService();
         
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -38,6 +39,9 @@ public class Aplicacao {
        // post("/produto/update/:id", (request, response) -> oferta.update(request, response));
            
        // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
+        
+        
+        get("/inserttipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
 
         
              
