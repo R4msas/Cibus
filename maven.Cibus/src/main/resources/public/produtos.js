@@ -31,14 +31,30 @@ fetch(url)
     for (let i = 0; i < data.length; i++) {
       let oferta = data[i];
       let cate = categoria[oferta.tipoProduto];
+      let supermercado;
+
+       
+
+        // Verificar o código do supermercado e definir o nome
+        if (oferta.codSupermercado == 1) {
+          supermercado = "Supermercados BH";
+        } 
+        else if(oferta.codSupermercado == 2){
+			supermercado = "EPA Supermercados";
+		}
+		else {
+          supermercado = oferta.codSupermercado;
+        }
 
       str += `
         <tr>
           <td>${oferta.descricao}</td>
           <td>R$ ${oferta.preco}</td>
           <td>${cate}</td>
+          <td>${supermercado}</td>
           <td>
             <button onClick="excluir(${oferta.id_oferta})" class="excluir-btn">Excluir</button>
+             <button onClick="window.location.href='cadastrarprodutos.html'" class="atualizar-btn">Atualizar</button>
           </td>
         </tr>
       `;
