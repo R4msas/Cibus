@@ -13,8 +13,9 @@ body {
   background: linear-gradient(to bottom left, blue, red);
 }
 
-header {
-  position: fixed;
+
+h1 {
+   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -25,12 +26,6 @@ header {
   background-color: #fff;
   z-index: 99;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  color: #fff;
-  font-size: 24px;
-  margin: 20px 0;
 }
 
 form {

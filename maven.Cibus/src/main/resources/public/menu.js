@@ -38,9 +38,14 @@ function carrega() {
         // Verificar o código do supermercado e definir o nome
         if (oferta.codSupermercado === 1) {
           supermercado = "Supermercados BH";
-        } else {
-          supermercado = oferta.codSupermercado;
-        }
+        } 
+        
+        if(oferta.codSupermercado === 2){
+			supermercado = "EPA Supermercados"
+		}
+		else{
+			supermercado = oferta.codSupermercado
+		}
 
         str += `
           <div class="card">
