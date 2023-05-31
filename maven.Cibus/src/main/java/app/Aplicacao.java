@@ -50,5 +50,7 @@ public class Aplicacao {
         
         //SUPERMERCADO INS, EXCLUIR, ATT,
         post("/insertSupermercado/", (request, response) ->  supermercadoService.insertPostSupermercado(request, response));
+        delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteTipo_produto(request, response));
+        put("/updateSupermercado/", (request, response) -> supermercadoService.updateTipo_produto(request, response));
     }
 }
