@@ -37,8 +37,9 @@ h1 {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  margin-top: 80px;
-  width: 600px;
+  margin-top: 150px;
+  width: 1200px;
+  margin-bottom: 40px;
 }
 
 table {
@@ -65,7 +66,7 @@ table th {
   cursor: pointer;
 }
 
-#atualizar-produto-btn {
+#adicionar-produto-btn {
   background-color: #333;
   color: #fff;
   border: none;
@@ -75,6 +76,6 @@ table th {
   width: 100%;
 }
 
-#atualizar-produto-btn:hover, .excluir-btn:hover {
+#adicionar-produto-btn:hover, .excluir-btn:hover {
   opacity: 0.8;
 }
