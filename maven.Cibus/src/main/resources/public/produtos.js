@@ -38,7 +38,7 @@ fetch(url)
           <td>R$ ${oferta.preco}</td>
           <td>${cate}</td>
           <td>
-            <button class="excluir-btn">Excluir</button>
+            <button onClick="excluir(${oferta.id_oferta})" class="excluir-btn">Excluir</button>
           </td>
         </tr>
       `;
@@ -51,3 +51,17 @@ fetch(url)
 }
 
 carrega();
+
+async function excluir(id){
+	let url = `/delete/?id=${id}`;
+
+	await fetch(url, {method:"DELETE"})
+
+  .then(data => {
+	  console.log(data);
+	  
+	  
+	  }
+	)
+	location.reload();	
+}

@@ -38,7 +38,7 @@ public class Aplicacao {
         
        // post("/produto/update/:id", (request, response) -> oferta.update(request, response));
            
-       // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
+        delete("/delete/", (request, response) -> ofertaService.delete(request, response));
         
         //TIPO PRODUTO: EXCLUIR, ATT,
         get("/insertTipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));

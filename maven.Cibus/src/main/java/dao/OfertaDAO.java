@@ -39,6 +39,12 @@ public class OfertaDAO extends DAO {
             statement.executeUpdate();
         }
     }
+	public void delete(int id) throws SQLException {
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM oferta WHERE id_oferta = ?");
+        stmt.setInt(1, id);
+        stmt.execute();
+        stmt.close();
+    }
 
    /* 
     public void update(Oferta oferta) throws SQLException {

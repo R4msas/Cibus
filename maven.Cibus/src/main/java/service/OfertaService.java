@@ -69,4 +69,25 @@ public Object getPesquisaOfertas(Request request, Response response) throws URIS
 				
 	return arrayDeOfertas;
 }
+
+public Boolean delete(Request request, Response response) throws URISyntaxException, SQLException {
+
+	ofertaDAO.connect();
+
+    int id = Integer.parseInt(request.queryParams("id"));
+
+
+
+    
+    ofertaDAO.delete(id);
+
+    response.status(200); // correct
+    response.redirect("../menu.html");
+
+
+
+    ofertaDAO.close();
+    
+    return(null);
+}
 }
