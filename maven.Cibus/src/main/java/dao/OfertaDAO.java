@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import model.Oferta;
 
 
@@ -26,7 +25,6 @@ public class OfertaDAO extends DAO {
     	connect();
 		
 	}
-
 	public void insert(Oferta oferta) throws SQLException {
         String sql = "INSERT INTO oferta (id_supermercado, id_produto, preco, descricao) VALUES (?, ?, ?, ?)";
         //connection();
