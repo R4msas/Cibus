@@ -12,9 +12,7 @@ public class Supermercado {
 		site = "";
 		}
 	
-	public Supermercado(int id_supermercado, String nome, String site) {
-		super();
-		this.id_supermercado = id_supermercado;
+	public Supermercado(String nome, String site) {
 		this.nome = nome;
 		this.site = site;
 		}

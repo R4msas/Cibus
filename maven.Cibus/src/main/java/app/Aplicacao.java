@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import model.Oferta;
 import service.OfertaService;
+import service.SupermercadoService;
 import service.TipoProdutoService;
 
 import spark.ModelAndView;
@@ -19,6 +20,7 @@ public class Aplicacao {
         staticFiles.location("/public");
         OfertaService ofertaService=new OfertaService();
         TipoProdutoService tipo_produtoservice = new TipoProdutoService();
+        SupermercadoService supermercadoService = new SupermercadoService();
         
         get("", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -41,12 +43,12 @@ public class Aplicacao {
         delete("/delete/", (request, response) -> ofertaService.delete(request, response));
         
         //TIPO PRODUTO: EXCLUIR, ATT,
-        get("/insertTipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
+        //get("/insertTipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
         post("/insertTipo/", (request, response) -> tipo_produtoservice.insertPostTipo_produto(request, response));
         delete("/deleteTipo/", (request, response) -> tipo_produtoservice.deleteTipo_produto(request, response));
         put("/updateTipo/", (request, response) -> tipo_produtoservice.updateTipo_produto(request, response));
         
         //SUPERMERCADO INS, EXCLUIR, ATT,
-             
+        post("/insertSupermercado/", (request, response) ->  supermercadoService.insertPostSupermercado(request, response));
     }
 }

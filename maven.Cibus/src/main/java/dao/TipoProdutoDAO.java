@@ -24,9 +24,9 @@ public class TipoProdutoDAO  extends DAO  {
 		
 	}
     
-   public void insertTipoProduto(TipoProduto tipo_produto) throws SQLException {
+   public void insertTipoProduto(String tipo_produto) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("INSERT INTO tipo_produto (nome) VALUES (?)");
-        statement.setString(1, tipo_produto.getNome());
+        statement.setString(1, tipo_produto);
         System.out.println(statement);
         statement.execute();
         statement.close();

@@ -12,18 +12,22 @@ import dao.SupermercadoDAO;
 import dao.OfertaDAO;
 import model.Oferta;
 import model.Supermercado;
+import model.TipoProduto;
 import spark.Request;
 import spark.Response;
 
-public class SupermercadoService {
+public class SupermercadoService2 implements Service{
 	private SupermercadoDAO supermercadoDAO;
+	private OfertaDAO ofertaDAO;
 
-
-	public SupermercadoService() {
-		supermercadoDAO = new SupermercadoDAO();
-
+	public SupermercadoService2() {
+		this.supermercadoDAO = new SupermercadoDAO();
+		this.ofertaDAO = new OfertaDAO();
 	}
 
+	
+	
+	//insert post supermercado
 	public Object insertPostSupermercado(Request request, Response response) throws URISyntaxException, SQLException {
 
 		supermercadoDAO.connect();
@@ -45,7 +49,11 @@ public class SupermercadoService {
         return(null);
     }
 	
-	/*
+	
+	
+	
+	
+
 	@Override
 	public Object get(Request request, Response response) throws URISyntaxException {
 		supermercadoDAO.connect();
@@ -142,6 +150,32 @@ public class SupermercadoService {
 
 	}
 	
-*/
+	public Object getAllComprador(Request request, Response response) throws URISyntaxException {
+		response.header("Content-Type", "application/json");
+		response.header("Content-Encoding", "UTF-8");
+		
+		int id = Integer.parseInt(request.params(":idComprador"));
+		
+		supermercadoDAO.connect();
+		ofertaDAO.connect();
+		
+		JSONArray allProds = new JSONArray();
+		
+		for (Supermercado s : supermercadoDAO.getAllComprador(id)) {
+			Supermercado supermercado= (Supermercado) s;
+	
+			// Pegar informaçõe sobre a oferta
+			Oferta oferta = ofertaDAO.get(supermercado.getId_supermercado());
+			supermercado.setNome(supermercado.getNome());
+			
+			allProds.put(supermercado.toJson());
+		}
+
+		supermercadoDAO.close();
+		ofertaDAO.close();
+		
+		return allProds;
+
+	}
 	
 }

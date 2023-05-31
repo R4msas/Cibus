@@ -22,7 +22,7 @@ public class TipoProdutoService {
         this.tipoProdutoDAO = new TipoProdutoDAO();
     }
 
-    public Object insertTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
+    /* public Object insertTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
 
         tipoProdutoDAO.connect();
 
@@ -42,15 +42,15 @@ public class TipoProdutoService {
         
         return(null);
     }
+    */
+    
     public Object insertPostTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
 
         tipoProdutoDAO.connect();
 
         String nome = request.queryParams("nome");
-        TipoProduto tipoProduto = new TipoProduto(nome);
-        System.out.println(tipoProduto.getNome());
-        
-        tipoProdutoDAO.insertTipoProduto(tipoProduto);
+
+        tipoProdutoDAO.insertTipoProduto(nome);
 
         response.status(201); // created
         response.redirect("../menu.html");

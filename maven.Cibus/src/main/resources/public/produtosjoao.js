@@ -55,9 +55,8 @@ carrega();
 async function excluir(id){
 	let url = `/delete/?id=${id}`;
 
-	await fetch(url, {method:"DELETE"})
-
-  .then(data => {
+await fetch(url, {method:"DELETE"})
+	.then(data => {
 	  console.log(data);
 	  
 	  
