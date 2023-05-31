@@ -40,10 +40,13 @@ public class Aplicacao {
            
        // get("/produto/delete/:id", (request, response) -> oferta.delete(request, response));
         
-        //TIPO PRODUTO:
+        //TIPO PRODUTO: EXCLUIR, ATT,
         get("/insertTipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));
         post("/insertTipo/", (request, response) -> tipo_produtoservice.insertPostTipo_produto(request, response));
-        //SUPERMERCADO
+        delete("/deleteTipo/", (request, response) -> tipo_produtoservice.deleteTipo_produto(request, response));
+        put("/updateTipo/", (request, response) -> tipo_produtoservice.updateTipo_produto(request, response));
+        
+        //SUPERMERCADO INS, EXCLUIR, ATT,
              
     }
 }

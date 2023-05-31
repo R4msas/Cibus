@@ -34,7 +34,7 @@ public class TipoProdutoDAO  extends DAO  {
    
 
     
-    public void update(TipoProduto tipo_produto) throws SQLException {
+    public void updateTipoProduto(TipoProduto tipo_produto) throws SQLException {
         PreparedStatement statement = connection.prepareStatement("UPDATE tipo_produto SET nome = ? WHERE id_produto = ?");
         statement.setString(1, tipo_produto.getNome());
         statement.setInt(2, tipo_produto.getIdProduto());
@@ -42,9 +42,9 @@ public class TipoProdutoDAO  extends DAO  {
         statement.close();
     }
     
-    public void delete(TipoProduto tipo_produto) throws SQLException {
+    public void deleteTipoProduto(int id) throws SQLException {
         PreparedStatement stmt = connection.prepareStatement("DELETE FROM tipo_produto WHERE id_produto = ?");
-        stmt.setInt(1, tipo_produto.getIdProduto());
+        stmt.setInt(1, id);
         stmt.execute();
         stmt.close();
     }

@@ -61,4 +61,48 @@ public class TipoProdutoService {
         
         return(null);
     }
+    
+    public Boolean deleteTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
+
+        tipoProdutoDAO.connect();
+
+        int id = Integer.parseInt(request.queryParams("idProduto"));
+
+
+        
+        tipoProdutoDAO.deleteTipoProduto(id);
+
+        response.status(200); // correct
+        response.redirect("../menu.html");
+
+
+
+        tipoProdutoDAO.close();
+        
+        return(null);
+    }
+    
+    public Boolean updateTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
+
+        tipoProdutoDAO.connect();
+
+        int id = Integer.parseInt(request.queryParams("idProduto"));
+        String nome = request.queryParams("nome");
+        
+        TipoProduto tipoProduto = new TipoProduto(id, nome);
+        
+        
+        tipoProdutoDAO.updateTipoProduto(tipoProduto);
+
+        response.status(200); // correct
+        response.redirect("../menu.html");
+
+
+
+        tipoProdutoDAO.close();
+        
+        return(null);
+    }
+    
+    
 }

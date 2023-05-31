@@ -52,7 +52,6 @@ function carrega() {
         `;
       }
 
-      // Colocar todos os cards dentro do contêiner
       document.getElementById('tela').innerHTML = `
         <div class="card-container">
           ${str}
