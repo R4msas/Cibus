@@ -1,7 +1,7 @@
 function carrega() {
   var categoria = {
     "1": "Carne",
-    "2": "Bebidas",
+    "2": "Bebidas alcoólicas",
     "3": "Arroz",
     "4": "Feijão",
     "5": "Óleos",
@@ -22,62 +22,65 @@ function carrega() {
   };
 
   let url = `/all`;
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    let str = '';
-    console.log(data);
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      let str = '';
+      console.log(data);
 
-    for (let i = 0; i < data.length; i++) {
-      let oferta = data[i];
-      let cate = categoria[oferta.tipoProduto];
-      let supermercado;
-
-       
+      for (let i = 0; i < data.length; i++) {
+        let oferta = data[i];
+        let cate = categoria[oferta.tipoProduto];
+        let supermercado;
 
         // Verificar o código do supermercado e definir o nome
         if (oferta.codSupermercado == 1) {
           supermercado = "Supermercados BH";
-        } 
-        else if(oferta.codSupermercado == 2){
-			supermercado = "EPA Supermercados";
-		}
-		else {
+        } else if (oferta.codSupermercado == 2) {
+          supermercado = "EPA Supermercados";
+        } else {
           supermercado = oferta.codSupermercado;
         }
 
-      str += `
-        <tr>
-          <td>${oferta.descricao}</td>
-          <td>R$ ${oferta.preco}</td>
-          <td>${cate}</td>
-          <td>${supermercado}</td>
-          <td>
-            <button onClick="excluir(${oferta.id_oferta})" class="excluir-btn">Excluir</button>
-             <button onClick="window.location.href='cadastrarprodutos.html'" class="atualizar-btn">Atualizar</button>
-          </td>
-        </tr>
-      `;
-    }
+        str += `
+          <tr>
+            <td>${oferta.descricao}</td>
+            <td>R$ ${oferta.preco}</td>
+            <td>${cate}</td>
+            <td>${supermercado}</td>
+            <td>
+              <button onClick="excluir(${oferta.id_oferta})" class="excluir-btn">Excluir</button>
+              <button onClick="redirecionarParaAtualizar(${oferta.id_oferta}, '${oferta.descricao}', ${oferta.preco}, ${oferta.tipoProduto}, ${oferta.codSupermercado})" class="atualizar-btn">Atualizar</button>
+            </td>
+          </tr>
+        `;
+      }
 
-    // Atualizar o conteúdo da tabela com as linhas geradas dinamicamente
-    document.querySelector('#produtos-table tbody').innerHTML = str;
-  });
+      // Atualizar o conteúdo da tabela com as linhas geradas dinamicamente
+      document.querySelector('#produtos-table tbody').innerHTML = str;
+    });
+}
 
+function redirecionarParaAtualizar(id_oferta, descricao, preco, tipoProduto, codSupermercado) {
+  // Codifique os valores para evitar problemas com caracteres especiais na URL
+  const descricaoCodificada = encodeURIComponent(descricao);
+
+  // Construa a URL com os parâmetros de consulta
+  const url = `cadastrarprodutos.html?id_oferta=${id_oferta}&descricao=${descricaoCodificada}&preco=${preco}&tipoProduto=${tipoProduto}&codSupermercado=${codSupermercado}`;
+
+  // Redirecione para a página de cadastro com os parâmetros de consulta
+  window.location.href = url;
 }
 
 carrega();
 
-async function excluir(id){
-	let url = `/delete/?id=${id}`;
+async function excluir(id) {
+  let url = `/delete/?id=${id}`;
 
-	await fetch(url, {method:"DELETE"})
+  await fetch(url, { method: "DELETE" })
+    .then(data => {
+      console.log(data);
+    });
 
-  .then(data => {
-	  console.log(data);
-	  
-	  
-	  }
-	)
-	location.reload();	
+  location.reload();
 }

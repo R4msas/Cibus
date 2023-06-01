@@ -33,6 +33,18 @@
     color: #333;
     text-decoration: none;
   }
+  
+  .login-btn {
+  display: flex;
+  align-items: center;
+}
+
+.login-btn a {
+  font-size: 1.2em;
+  color: #333;
+  text-decoration: none;
+  margin-left: 20px;
+}
 
   .navigation {
     display: flex;

@@ -40,7 +40,7 @@ function carrega() {
           supermercado = "Supermercados BH";
         } 
         
-        if(oferta.codSupermercado === 2){
+        else if(oferta.codSupermercado === 2){
 			supermercado = "EPA Supermercados"
 		}
 		else{
