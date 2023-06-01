@@ -74,24 +74,22 @@ function redirecionarParaAtualizar(id_oferta, descricao, preco, tipoProduto, cod
 
 carrega();
 
-
+<<<<<<< HEAD
 //=======================================================FETCHs
 //EXCLUIR:
-<<<<<<< HEAD
-
+async function excluir(id){
+	let url = `/delete/?id=${id}`;
 =======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
 async function excluir(id) {
   let url = `/delete/?id=${id}`;
+>>>>>>> 4e38574d6a183f125cd5d821a7b50fb181de8fc4
 
   await fetch(url, { method: "DELETE" })
     .then(data => {
       console.log(data);
-    })
-<<<<<<< HEAD
+    });
 
-=======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
+<<<<<<< HEAD
   .then(data => {
 	  console.log(data);
 	  
@@ -117,12 +115,7 @@ async function excluirSupermercado(idSupermercado){
 }
 
 //INSERIR
-<<<<<<< HEAD
-  location.reload();
-}
 =======
-
   location.reload();
 }
-
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
+>>>>>>> 4e38574d6a183f125cd5d821a7b50fb181de8fc4

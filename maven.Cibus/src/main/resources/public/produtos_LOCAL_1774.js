@@ -77,10 +77,7 @@ carrega();
 
 //=======================================================FETCHs
 //EXCLUIR:
-<<<<<<< HEAD
 
-=======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
 async function excluir(id) {
   let url = `/delete/?id=${id}`;
 
@@ -88,10 +85,7 @@ async function excluir(id) {
     .then(data => {
       console.log(data);
     })
-<<<<<<< HEAD
 
-=======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
   .then(data => {
 	  console.log(data);
 	  
@@ -117,12 +111,5 @@ async function excluirSupermercado(idSupermercado){
 }
 
 //INSERIR
-<<<<<<< HEAD
   location.reload();
 }
-=======
-
-  location.reload();
-}
-
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
