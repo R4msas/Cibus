@@ -12,6 +12,7 @@ import dao.SupermercadoDAO;
 import dao.OfertaDAO;
 import model.Oferta;
 import model.Supermercado;
+import model.TipoProduto;
 import spark.Request;
 import spark.Response;
 
@@ -44,6 +45,56 @@ public class SupermercadoService {
         
         return(null);
     }
+	
+    public Boolean deleteSupermercado(Request request, Response response) throws URISyntaxException, SQLException {
+
+        supermercadoDAO.connect();
+
+        int id = Integer.parseInt(request.queryParams("id_supermercado"));
+
+
+        
+        supermercadoDAO.deleteSupermercado(id);
+
+        response.status(200); // correct
+        response.redirect("../menu.html");
+
+
+
+        supermercadoDAO.close();
+        
+        return(null);
+    }
+	
+    public Boolean updateSupermercado(Request request, Response response) throws URISyntaxException, SQLException {
+
+        supermercadoDAO.connect();
+
+        int id = Integer.parseInt(request.queryParams("id_supermercado"));
+        String nome = request.queryParams("nome");
+        String site = request.queryParams("site");
+        
+        Supermercado supermercado = new Supermercado(id, nome, site);
+        
+        
+        supermercadoDAO.updateSupermercado(supermercado);
+
+        response.status(200); // correct
+        response.redirect("../menu.html");
+
+
+        supermercadoDAO.close();
+        
+        return(null);
+    }
+    
+    
+ 
+	
+	
+	
+	
+    
 	
 	/*
 	@Override
