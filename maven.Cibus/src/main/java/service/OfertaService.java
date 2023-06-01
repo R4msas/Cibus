@@ -114,7 +114,7 @@ public Boolean update(Request request, Response response) throws URISyntaxExcept
     String descricao = request.queryParams("descricao");
     float preco = Float.parseFloat(request.queryParams("preco"));
     int tipoProduto = Integer.parseInt(request.queryParams("tipoProduto"));
-    int supermercado = Integer.parseInt(request.queryParams("supermercado"));
+    int supermercado = Integer.parseInt(request.queryParams("codSupermercado"));
     
     Oferta oferta = new Oferta(id,descricao, preco, supermercado, tipoProduto);
     
