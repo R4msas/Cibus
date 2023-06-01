@@ -1,30 +1,32 @@
 package dao;
 
+
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.sql.*;
 
 public class DAO {
-protected Connection conexao;
+protected Connection connection;
 	
 	public DAO() {
-		conexao = null;
+		connection = null;
 	}
 	
 	public boolean conectar() {
 		String driverName = "org.postgresql.Driver";                    
 		String serverName = "localhost";
-		String mydatabase = "teste";
+		String mydatabase = "CibusDatabase";
 		int porta = 5432;
 		String url = "jdbc:postgresql://" + serverName + ":" + porta +"/" + mydatabase;
-		String username = "ti2cc";
-		String password = "ti@cc";
+		String username = "postgres";
+		String password = "87802030jp";
 		boolean status = false;
 
 		try {
 			Class.forName(driverName);
-			conexao = DriverManager.getConnection(url, username, password);
-			status = (conexao == null);
+			connection = DriverManager.getConnection(url, username, password);
+			status = (connection == null);
 			System.out.println("Conexão efetuada com o postgres!");
 		} catch (ClassNotFoundException e) { 
 			System.err.println("Conexão NÃO efetuada com o postgres -- Driver não encontrado -- " + e.getMessage());
@@ -39,7 +41,7 @@ protected Connection conexao;
 		boolean status = false;
 		
 		try {
-			conexao.close();
+			connection.close();
 			status = true;
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -53,4 +55,22 @@ protected Connection conexao;
 		m.update(senha.getBytes(),0, senha.length());
 		return new BigInteger(1,m.digest()).toString(16);
 	}
+	
+	
+	
+	
+	/*NOVO
+
+public interface Tipo_produtoDAO {
+
+
+    void insert(Tipo_produto tipo_produto);
+    void update(Tipo_produto tipo_produto);
+    void delete(int id_produto);
+    Tipo_produto findById(int id_produto);
+    List<Tipo_produto> findAll();
+}
+*/
+	
+	
 }

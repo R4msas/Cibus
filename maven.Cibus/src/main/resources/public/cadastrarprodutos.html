@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Supermercados</title>
+  <link rel="stylesheet" href="cadastrarprodutos.css">
+  <title>Cadastro de Produtos</title>
+</head>
+<body>
+  <h1>Cadastro de Produtos</h1>
+
+  <form>
+    <label for="produto-nome">Nome do Produto:</label>
+    <input type="text" id="produto-nome" name="produto-nome" required>
+
+    <label for="produto-preco">Preço:</label>
+    <input type="text" id="produto-preco" name="produto-preco" required >
+
+    <label for="produto-tipo">Tipo do Produto:</label>
+    <div class="select-container">
+      <select id="produto-tipo" name="produto-tipo" required>
+        <option value="1">Carne</option>
+        <option value="2">Bebidas</option>
+        <option value="3">Arroz</option>
+        <option value="4">Feijão</option>
+        <option value="5">Óleos</option>
+        <option value="6">Macarrão</option>
+        <option value="7">Suco</option>
+        <option value="8">Refrigerante</option>
+        <option value="9">Bolacha</option>
+        <option value="10">Pão</option>
+        <option value="11">Laticínios</option>
+        <option value="12">Xampu</option>
+        <option value="13">Sabonete</option>
+        <option value="14">Sabão</option>
+        <option value="15">Cerveja</option>
+        <option value="16">Farinha de Trigo</option>
+        <option value="17">Café</option>
+        <option value="18">Iogurte</option>
+        <option value="19">Leite</option>
+      </select>
+      <a href="novotipoproduto.html" id="adicionar-tipo" class="button">Adicionar Tipo de Produto</a>
+    </div>
+
+    <label for="produto-supermercado">Supermercado:</label>
+    <input type="text" id="produto-supermercado" name="produto-supermercado" required>
+
+    <input type="submit" value="Atualizar Produto">
+  </form>
+  <script src="cadastrarprodutos.js"></script>
+  </body>
+</html>

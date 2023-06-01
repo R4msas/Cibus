@@ -1,0 +1,11 @@
+{"ofertas": {
+  ["id": 1,
+  "preco": 1,
+  "descricao":"doce de leite",
+  "supermercado":"BH"],
+  ["id": 2,
+  "preco": 2,
+  "descricao":"cafe",
+  "supermercado":"BH"],
+
+}}

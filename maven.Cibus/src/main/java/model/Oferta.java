@@ -1,13 +1,43 @@
 package model;
-import java.io.File;
-import java.util.Scanner;
+
+import org.json.JSONObject;
+
 public class Oferta{
-    
     private String descricao;
-    private float preco;
+    private int id_oferta;
+	private float preco;
     private int codSupermercado;
     private int tipoProduto;
+    //construtor 
+    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.codSupermercado = codSupermercado;
+        this.tipoProduto = tipoProduto;
+    }
+    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto, int id_oferta) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.codSupermercado = codSupermercado;
+        this.tipoProduto = tipoProduto;
+        this.id_oferta = id_oferta;
+    }
     
+    
+	public Oferta() {
+        this.descricao = null;
+        this.preco = 0;
+        this.codSupermercado = 0;
+        this.tipoProduto = 0;
+        this.id_oferta = 0;
+    }
+    
+    public int getId_oferta() {
+		return id_oferta;
+	}
+	public void setId_oferta(int id_oferta) {
+		this.id_oferta = id_oferta;
+	}
     public int getTipoProduto()
     {
         return tipoProduto;
@@ -40,46 +70,9 @@ public class Oferta{
     {
         this.codSupermercado = codSupermercado;
     }
-    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
-        this.descricao = descricao;
-        this.preco = preco;
-        this.codSupermercado = codSupermercado;
-        this.tipoProduto = tipoProduto;
-    }
     
-	public Oferta() {
-        this.descricao = null;
-        this.preco = 0;
-        this.codSupermercado = 0;
-        this.tipoProduto = 0;
-    }
     
-    public void lerArquivo() throws Exception//método público que chama a leitura do arquivo formatado
-    {	MyIO.println("Informe o número do supermercado");
-    	int supermercado=MyIO.readInt();
-    	MyIO.println("Informe o nome do arquivo de leitura:");
-		String nomeDoArquivo=MyIO.readLine();
-    	
-    	lerArquivo(nomeDoArquivo, supermercado);
-    }
-    private void lerArquivo(String nomeDoArquivo, int supermercado) throws Exception//método privado que recebe o nome do arquivo 
-    {
-    	ListaEncadeada lista=new ListaEncadeada();
-    	try {
-        lista.criaListaDeOfertas(nomeDoArquivo, supermercado);
-    	}
-    	catch(Exception e)
-    	{
-    		MyIO.println("Informe o nome correto do arquivo:");
-    		nomeDoArquivo=MyIO.readLine();
-    		lista.criaListaDeOfertas(nomeDoArquivo, supermercado);
-    	}
-		ListaEncadeada necessitaDeClassificacao= new ListaEncadeada();
-        lista.percorreAListaEClassifica(necessitaDeClassificacao);
-        lista.imprimeTodos();
-        necessitaDeClassificacao.imprimeTodos();
-    }
-   
+        
     public void ler(String stringRecebida) throws Exception
     {
             String[] keyValue = stringRecebida.split(":");
@@ -90,10 +83,10 @@ public class Oferta{
             
     }
 
-    public int classificaTipo()//efetua a comparação da descrição com termos comuns de produtos, caso seja possível retorna o inteiro para setTipo, do contrário retorna -1
+    public int classificaTipo()
     {
         String carne[]={"carne", "acem", "acém", "paleta", "costela", "picanha", "chã de", "costelinha","hamburguer","linguica","linguiça","file","filé","salsicha","empanado"};
-        String bebidaAlcolica[]={"whisky","vinho","vodka","cachaça","cachaca","rum"};
+        String bebidaAlcolica[]={"whisky"," vinho","vodka","cachaça","cachaca"};
         String macarrao[]={"macarrao","noodle","massa"};
         String refrigerante[]={"refrigerante", "coca-cola","pepsi","fanta"};
         String bolacha[]={"bolacha","biscoito"};
@@ -103,7 +96,9 @@ public class Oferta{
         String sabao[]={"sabao","detergente","lava roupas"};
         String cafe[]={"cafe", "café"};
         String oleo[]={"oleo","óleo","azeite"};
-        int posicao=0;
+        String racao[]= {"racao","ração"};
+        
+        int posicao=20;//inicia a variável como 20, que é não classificado
         Boolean possuiPosicao=false;
         int tipoProduto=-1;
         String stringRecebida =descricao.toLowerCase();
@@ -127,12 +122,22 @@ public class Oferta{
             possuiPosicao=true;
             posicao=16;
         }
+          else if(stringRecebida.contains("agua mineral"))
+          {
+                  possuiPosicao=true;
+                  posicao=23;
+          }
+          else if(stringRecebida.contains("sabonete"))
+          {
+              possuiPosicao=true;
+              posicao=13;
+          }
         while(possuiPosicao==false&&posicao<carne.length)
         {
             if(stringRecebida.contains(carne[posicao]))
             {
                 possuiPosicao=true;
-                tipoProduto=0;
+                tipoProduto=1;
             }
             else{
             posicao++;
@@ -240,7 +245,7 @@ public class Oferta{
             if(stringRecebida.contains(sabao[posicao]))
             {
                 possuiPosicao=true;
-                tipoProduto=13;
+                tipoProduto=21;
             }
             else{
             posicao++;
@@ -258,125 +263,34 @@ public class Oferta{
              posicao++;
             }
         }
+        posicao=0;
+        {
+        	while(possuiPosicao==false&&posicao<racao.length)
+        	{
+        		if(stringRecebida.contains(racao[posicao]))
+                {
+                    possuiPosicao=true;
+                    tipoProduto=22;
+                }
+        		else {
+        			possuiPosicao=true;
+        			posicao++;
+        		}
+        	}
+        }
  
 
 return tipoProduto;
     }
-}
-class Celula{
-    private Oferta atual;
-    private Celula prox;
-
-    public Oferta getAtual()
-    {
-        return atual;
-    }
-    public void setAtual(Oferta atual)
-    {
-        this.atual = atual;
-    }
-    public Celula getProx()
-    {
-        return prox;
-    }
-    public void setProx(Celula prox)
-    {
-        this.prox = prox;
-    }
     
-}
-
-class ListaEncadeada{
-    Celula ultimo;
-    Celula primeiro;
-  
-    public void inserirInicio(Celula tmp)  {
-    tmp.setProx(primeiro.getProx());
-    primeiro.setProx(tmp);
-    tmp=null;     
-
-    }
-    public void inserirFinal(Celula tmp)
-    {
-        ultimo.setProx(tmp);
-        ultimo=tmp;
-        tmp=null;
-
-    }
-   public Oferta removerInicio()  {
-        if(primeiro.getProx()==ultimo)
-        {
-            ultimo=primeiro;
-        }
-        Oferta resposta=primeiro.getProx().getAtual();
-        primeiro.setProx(primeiro.getProx().getProx());
-        return resposta;
-    }
-    public Oferta removerFim() {
-        Celula temporaria=primeiro.getProx();
-        while(temporaria.getProx()!=ultimo)
-        {
-            temporaria=temporaria.getProx();
-        }
-        Oferta resposta=ultimo.getAtual();
-        temporaria.setProx(null);
-        ultimo=temporaria;
-        return resposta;
-    }
-    public void percorreAListaEClassifica(ListaEncadeada necessitaDeClassificacao)//percorre a lista de e classifica e chama a função que classifica cada oferta
-    {            
-        necessitaDeClassificacao.ultimo=necessitaDeClassificacao.primeiro=new Celula();
-        Celula tmp=primeiro;
-        while(tmp.getProx()!=null||tmp==ultimo)//percorre por toda a lista encadeada
-        {
-            tmp=primeiro.getProx();
-            int tipoProduto=tmp.getAtual().classificaTipo();
-            
-             if(tipoProduto==-1)//se o tipo de produto não for inserido, altera para -1 e guarda na lista em que é necessário inserir manualmente
-            {
-                Celula temp=new Celula();
-                temp.setAtual(tmp.getAtual());
-                necessitaDeClassificacao.inserirFinal(temp);//insere no final da lista
-            }
-            else{
-                Celula temp2=new Celula();
-                temp2.setAtual(tmp.getAtual());
-                temp2.getAtual().setTipoProduto(tipoProduto);
-                //enviar para o banco de dados  
-                } 
-                removerInicio();
-        }
-    }
-    public void criaListaDeOfertas(String nomeDoArquivo, int supermercado) throws Exception
-    {
-        Scanner sc = new Scanner(new File(nomeDoArquivo));
-        String stringRecebida =sc.nextLine();//inicia a primeira leitura da primeira linha
-        Celula tmp=new Celula();
-        primeiro=ultimo=new Celula();//primeiro e último apontam para a mesma célula.
-        while (sc.hasNextLine())//enquanto houver uma nova linha lerá o arquivo, gerando um novo objeto da classe Oferta
-        {
-            Oferta nova =new Oferta();
-            nova.ler(stringRecebida);
-            nova.setCodSupermercado(supermercado);
-            tmp.setAtual(nova);
-            inserirFinal(tmp);       
-            stringRecebida = sc.nextLine();
-            tmp=new Celula();
-        }
-        sc.close();
-    }
-    public void imprimeTodos()//falta definir a forma de impressão
-    {
-        Celula tmp=primeiro;
-        while(tmp.getProx()!=null)
-        {
-            tmp=tmp.getProx();
-            MyIO.setCharset("UTF-8");
-            MyIO.println("Descricao:"+tmp.getAtual().getDescricao());
-            MyIO.println("Codigo do supermercado:"+tmp.getAtual().getCodSupermercado());
-            MyIO.println("Tipo de produto:"+tmp.getAtual().getTipoProduto());
-            MyIO.println("Preco:"+tmp.getAtual().getPreco());
-        }
-    }
+    public JSONObject toJson() {
+		JSONObject obj = new JSONObject();
+		obj.put("id_oferta", this.getId_oferta());
+		obj.put("descricao", this.getDescricao());
+		obj.put("preco", this.getPreco());
+		obj.put("codSupermercado", this.getCodSupermercado());
+		obj.put("tipoProduto", this.getTipoProduto());
+		return obj;
+	}
 }
 

@@ -1,119 +1,162 @@
 package dao;
 
-import model.Oferta;
-
+import java.sql.*;
+//import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Timestamp;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import model.Oferta;
 
 
-public class OfertaDAO extends DAO {	
-	public OfertaDAO() {
-		super();
-		conectar();
-	}
-	
-	
-	public void finalize() {
-		close();
-	}
-	
-	
-	public boolean insert(Oferta ofertas) {
-		boolean status = false;
-		try {
-			String sql = "INSERT INTO ofertas (descricao, preco, codSupermercado, tipoProduto) "
-		               + "VALUES ('" + ofertas.getDescricao() + "', "
-		               + ofertas.getPreco() + ", " + ofertas.getCodSupermercado() + ", " + ofertas.getTipoProduto() + ", ?, ?);";
-			PreparedStatement st = conexao.prepareStatement(sql);
-			st.executeUpdate();
-			st.close();
-			status = true;
-		} catch (SQLException u) {  
-			throw new RuntimeException(u);
-		}
-		return status;
-	}
-	
-	
-	public List<Oferta> get() {
-		return get("");
-	}
 
-	
-	public List<Oferta> getOrderByID() {
-		return get("id");		
-	}
-	
-	
-	public List<Oferta> getOrderByDescricao() {
-		return get("descricao");		
-	}
-	
-	
-	public List<Oferta> getOrderByPreco() {
-		return get("preco");		
-	}
-	
-	
-	private List<Oferta> get(String orderBy) {
-		List<Oferta> produtos = new ArrayList<Oferta>();
+public class OfertaDAO extends DAO {
+
+    private Connection conn;
+	public Object OfertaDAO;
+
+    public OfertaDAO(Connection connection) {
+        this.connection = connection;
+    }
+
+    public OfertaDAO() {
+    	super();
+    	connect();
 		
-		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM ofertas" + ((orderBy.trim().length() == 0) ? "" : (" ORDER BY " + orderBy));
-			ResultSet rs = st.executeQuery(sql);	           
-	        while(rs.next()) {	            	
-	        	Oferta p = new Oferta(rs.getInt("id"), rs.getString("descricao"), (float)rs.getDouble("preco"), 
-	        			                rs.getInt("quantidade"),
-	        			                rs.getTimestamp("datafabricacao").toLocalDateTime(),
-	        			                rs.getDate("datavalidade").toLocalDate());
-	            produtos.add(p);
-	        }
-	        st.close();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return produtos;
 	}
-	
-	
-	public boolean update(Oferta ofertas) {
-		boolean status = false;
-		try {  
-			String sql = "UPDATE produto SET descricao = '" + ofertas.getDescricao() + "', "
-					   + "preco = " + ofertas.getPreco() + ", " 
-					   + "quantidade = " + ofertas.getQuantidade() + ","
-					   + "datafabricacao = ?, " 
-					   + "datavalidade = ? WHERE id = " + ofertas.getID();
-			PreparedStatement st = conexao.prepareStatement(sql);
-		    st.setTimestamp(1, Timestamp.valueOf(ofertas.getDataFabricacao()));
-			st.setDate(2, Date.valueOf(ofertas.getDataValidade()));
-			st.executeUpdate();
-			st.close();
-			status = true;
-		} catch (SQLException u) {  
-			throw new RuntimeException(u);
-		}
-		return status;
-	}
-	
-	
-	public boolean delete(int id) {
-		boolean status = false;
-		try {  
-			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM ofertas WHERE id = " + id);
-			st.close();
-			status = true;
-		} catch (SQLException u) {  
-			throw new RuntimeException(u);
-		}
-		return status;
-	}
-}
+	public void insert(Oferta oferta) throws SQLException {
+        String sql = "INSERT INTO oferta (id_supermercado, id_produto, preco, descricao) VALUES (?, ?, ?, ?)";
+        //connection();
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, oferta.getCodSupermercado());
+            statement.setInt(2, oferta.getTipoProduto());
+            statement.setFloat(3, oferta.getPreco());
+            statement.setString(4, oferta.getDescricao());
+
+            statement.executeUpdate();
+        }
+    }
+	public void delete(int id) throws SQLException {
+        PreparedStatement stmt = connection.prepareStatement("DELETE FROM oferta WHERE id_oferta = ?");
+        stmt.setInt(1, id);
+        stmt.execute();
+        stmt.close();
+    }
+
+   /* 
+    public void update(Oferta oferta) throws SQLException {
+        String sql = "UPDATE oferta SET id_supermercado = ?, id_produto = ?, preco = ?, descricao = ? WHERE id_oferta = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, oferta.getCodSupermercado());
+            statement.setInt(2, oferta.getTipoProduto());
+            statement.setFloat(3, oferta.getPreco());
+            statement.setString(4, oferta.getDescricao());
+            statement.setInt(5, oferta.getId_oferta());
+
+            statement.executeUpdate();
+        }
+    }*/
+
+    /*public void delete(Oferta oferta) throws SQLException {
+        String sql = "DELETE FROM oferta WHERE id_oferta = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, oferta.getId_oferta());
+
+            statement.executeUpdate();
+        }
+    }*/
+
+  /*  public Oferta findById(int id) throws SQLException {
+        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE id_oferta = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+
+            try (ResultSet result = statement.executeQuery()) {
+                if (result.next()) {
+                    Oferta oferta = new Oferta();
+                    oferta.setId_oferta(result.getInt("id_oferta"));
+                    oferta.setCodSupermercado(result.getInt("id_supermercado"));
+                    oferta.setTipoProduto(result.getInt("id_produto"));
+                    oferta.setPreco(result.getFloat("preco"));
+                    oferta.setDescricao(result.getString("descricao"));
+
+                    return oferta;
+                } else {
+                    return null;
+                }
+            }
+        }
+    }*/
+    //esta função busca todas as ofertas do banco e retorna uma lista de ofertas
+    public List<Oferta> getAll() throws SQLException {
+        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            try (ResultSet result = statement.executeQuery()) {
+                List<Oferta> ofertas = new ArrayList<>();
+
+                while (result.next()) {
+                    Oferta oferta = new Oferta();
+                    oferta.setId_oferta(result.getInt("id_oferta"));
+                    oferta.setCodSupermercado(result.getInt("id_supermercado"));
+                    oferta.setTipoProduto(result.getInt("id_produto"));
+                    oferta.setPreco(result.getFloat("preco"));
+                    oferta.setDescricao(result.getString("descricao"));
+
+                    ofertas.add(oferta);
+                }
+                return ofertas;
+                }
+            }
+        }
+    //esta função recebe a id_produto e uma string de pesquisa e retorna uma lista de ofertas que sigam esta consulta SQL
+    public List<Oferta> getPorTipo(int id, String pesquisa) throws SQLException {
+        String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE id_produto =? AND DESCRICAO ILIKE ? ";
+        
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id);
+            statement.setString(2,"%"+pesquisa+"%");
+            try (ResultSet result = statement.executeQuery()) {
+                List<Oferta> ofertas = new ArrayList<>();
+
+                while (result.next()) {
+                    Oferta oferta = new Oferta();
+                    oferta.setId_oferta(result.getInt("id_oferta"));
+                    oferta.setCodSupermercado(result.getInt("id_supermercado"));
+                    oferta.setTipoProduto(result.getInt("id_produto"));
+                    oferta.setPreco(result.getFloat("preco"));
+                    oferta.setDescricao(result.getString("descricao"));
+
+                    ofertas.add(oferta);
+                }
+                return ofertas;
+                }
+            }
+    }
+    //busca na tabela de ofertas uma string, caso tenha, retorna uma lista de ofertas
+        public List<Oferta> getPesquisaOferta(String pesquisa) throws SQLException {
+            String sql = "SELECT id_oferta, id_supermercado, id_produto, preco, descricao FROM oferta WHERE DESCRICAO ILIKE ? ";
+            
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1,"%"+pesquisa+"%");
+                try (ResultSet result = statement.executeQuery()) {
+                    List<Oferta> ofertas = new ArrayList<>();
+
+                    while (result.next()) {
+                        Oferta oferta = new Oferta();
+                        oferta.setId_oferta(result.getInt("id_oferta"));
+                        oferta.setCodSupermercado(result.getInt("id_supermercado"));
+                        oferta.setTipoProduto(result.getInt("id_produto"));
+                        oferta.setPreco(result.getFloat("preco"));
+                        oferta.setDescricao(result.getString("descricao"));
+
+                        ofertas.add(oferta);
+                    }
+                    return ofertas;
+                    }
+                }
+    }}

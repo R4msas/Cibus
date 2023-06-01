@@ -11,16 +11,16 @@ import model.Supermercado;
 
 public class SupermercadoDAO {
     
-    private Connection conn;
+    private Connection connection;
     
-    public SupermercadoDAO(Connection conn) {
-        this.conn = conn;
+    public SupermercadoDAO(Connection connection) {
+        this.connection = connection;
     }
     
     // Método para inserir um novo supermercado no banco de dados
     public void insert(Supermercado supermercado) throws SQLException {
         String sql = "INSERT INTO supermercado (nome, site) VALUES (?, ?)";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, supermercado.getNome());
             stmt.setString(2, supermercado.getSite());
             stmt.executeUpdate();
@@ -30,7 +30,7 @@ public class SupermercadoDAO {
     // Método para atualizar um supermercado existente no banco de dados
     public void update(Supermercado supermercado) throws SQLException {
         String sql = "UPDATE supermercado SET nome = ?, site = ? WHERE id_supermercado = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setString(1, supermercado.getNome());
             stmt.setString(2, supermercado.getSite());
             stmt.setInt(3, supermercado.getId_supermercado());
@@ -41,7 +41,7 @@ public class SupermercadoDAO {
     // Método para excluir um supermercado do banco de dados
     public void delete(int id) throws SQLException {
         String sql = "DELETE FROM supermercado WHERE id_supermercado = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }
@@ -50,7 +50,7 @@ public class SupermercadoDAO {
     // Método para buscar um supermercado pelo seu ID no banco de dados
     public Supermercado findById(int id) throws SQLException {
         String sql = "SELECT * FROM supermercado WHERE id_supermercado = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -65,7 +65,7 @@ public class SupermercadoDAO {
     /* Método para buscar todos os supermercados no banco de dados */
     public List<Supermercado> findAll() throws SQLException {
         String sql = "SELECT * FROM supermercado";
-        try (PreparedStatement stmt = conn.prepareStatement(sql);
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             List<Supermercado> supermercados = new ArrayList<>();
             while (rs.next()) {
