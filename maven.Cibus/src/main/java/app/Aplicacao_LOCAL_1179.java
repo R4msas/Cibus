@@ -29,7 +29,7 @@ public class Aplicacao {
             );
             
         });
-        //Ofertas
+        
         get("/pesquisa/:pesquisa", (request, response) -> ofertaService.getPesquisaOfertas(request, response));
         
         //post("/produto/insert", (request, response) -> oferta.insert(request, response));
@@ -39,7 +39,6 @@ public class Aplicacao {
         //get("/produto/update/:id", (request, response) -> oferta.getToUpdate(request, response));
         
        // post("/produto/update/:id", (request, response) -> oferta.update(request, response));
-        post("/cadastra/", (request, response) -> ofertaService.lerArquivo(request, response));
            
         delete("/delete/", (request, response) -> ofertaService.delete(request, response));
         
@@ -53,9 +52,5 @@ public class Aplicacao {
         post("/insertSupermercado/", (request, response) ->  supermercadoService.insertPostSupermercado(request, response));
         delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteSupermercado(request, response));
         put("/updateSupermercado/", (request, response) -> supermercadoService.updateSupermercado(request, response));
-
-        //delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteTipo_produto(request, response));
-        //put("/updateSupermercado/", (request, response) -> supermercadoService.updateTipo_produto(request, response));
-
     }
 }
