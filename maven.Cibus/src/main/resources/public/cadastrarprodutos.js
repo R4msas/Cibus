@@ -9,4 +9,19 @@ window.onload = function() {
       document.getElementById('produto-supermercado').value = urlParams.get('codSupermercado');
     };
 
+async function atualiza(id_oferta,descricao,preco,tipoProduto,codSupermercado) {
+  let url = `/update/?id_oferta=${id_oferta}&descricao=${descricao}&preco=${preco}&tipoProduto=${tipoProduto}&codSupermercado=${codSupermercado}`;
+
+  await fetch(url, { method: "PUT" })
+    .then(data => {
+      console.log(data);
+    })
+  .then(data => {
+	  console.log(data);
+	  
+	  
+	  }
+	)
+	location.reload();	
+}
   

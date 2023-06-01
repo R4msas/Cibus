@@ -56,6 +56,14 @@ public class Oferta{
         this.tipoProduto = tipoProduto;
     }
     
+    public Oferta(int id_oferta, String descricao, float preco, int codSupermercado, int tipoProduto) {
+    	this.id_oferta = id_oferta;
+    	this.descricao = descricao;
+        this.preco = preco;
+        this.codSupermercado = codSupermercado;
+        this.tipoProduto = tipoProduto;
+    }
+    
 	public Oferta() {
         this.descricao = null;
         this.preco = 0;

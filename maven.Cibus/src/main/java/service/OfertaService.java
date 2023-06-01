@@ -110,20 +110,23 @@ public Boolean update(Request request, Response response) throws URISyntaxExcept
 
     ofertaDAO.connect();
 
-    int id = Integer.parseInt(request.queryParams("idProduto"));
-    String nome = request.queryParams("nome");
+    int id = Integer.parseInt(request.queryParams("id_oferta"));
+    String descricao = request.queryParams("descricao");
+    float preco = Float.parseFloat(request.queryParams("preco"));
+    int tipoProduto = Integer.parseInt(request.queryParams("tipoProduto"));
+    int supermercado = Integer.parseInt(request.queryParams("supermercado"));
     
-    TipoProduto tipoProduto = new TipoProduto(id, nome);
+    Oferta oferta = new Oferta(id,descricao, preco, supermercado, tipoProduto);
     
     
-    tipoProdutoDAO.updateTipoProduto(tipoProduto);
+    ofertaDAO.update(oferta);
 
     response.status(200); // correct
     response.redirect("../menu.html");
 
 
 
-    tipoProdutoDAO.close();
+    ofertaDAO.close();
     
     return(null);
 }
