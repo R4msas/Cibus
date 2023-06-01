@@ -48,5 +48,6 @@ public class Suporte {
         post("/insertSupermercado/", (request, response) ->  supermercadoService.insertPostSupermercado(request, response));
         delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteSupermercado(request, response));
         put("/updateSupermercado/", (request, response) -> supermercadoService.updateSupermercado(request, response));
+        get("/getAllSupermercado/", (request, response) ->  supermercadoService.getAllSupermercado(request, response));
     }
 }
