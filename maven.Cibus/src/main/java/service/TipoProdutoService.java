@@ -61,8 +61,6 @@ public class TipoProdutoService {
         
         tipoProdutoDAO.deleteTipoProduto(id);
 
-        response.status(200); // correct
-        response.redirect("../menu.html");
 
 
 
