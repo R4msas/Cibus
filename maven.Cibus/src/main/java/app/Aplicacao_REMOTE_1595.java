@@ -51,16 +51,11 @@ public class Aplicacao {
         
         //SUPERMERCADO INS, EXCLUIR, ATT,
         post("/insertSupermercado/", (request, response) ->  supermercadoService.insertPostSupermercado(request, response));
-<<<<<<< HEAD
-        //delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteTipo_produto(request, response));
-        //put("/updateSupermercado/", (request, response) -> supermercadoService.updateTipo_produto(request, response));
-=======
         delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteSupermercado(request, response));
         put("/updateSupermercado/", (request, response) -> supermercadoService.updateSupermercado(request, response));
 
         //delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteTipo_produto(request, response));
         //put("/updateSupermercado/", (request, response) -> supermercadoService.updateTipo_produto(request, response));
 
->>>>>>> a23e54a4b280efd6a066cad6be9e63f7e170755a
     }
 }
