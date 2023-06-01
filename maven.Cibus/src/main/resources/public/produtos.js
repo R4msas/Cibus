@@ -74,22 +74,18 @@ function redirecionarParaAtualizar(id_oferta, descricao, preco, tipoProduto, cod
 
 carrega();
 
-<<<<<<< HEAD
+
 //=======================================================FETCHs
 //EXCLUIR:
-async function excluir(id){
-	let url = `/delete/?id=${id}`;
-=======
+
 async function excluir(id) {
   let url = `/delete/?id=${id}`;
->>>>>>> 4e38574d6a183f125cd5d821a7b50fb181de8fc4
 
   await fetch(url, { method: "DELETE" })
     .then(data => {
       console.log(data);
-    });
+    })
 
-<<<<<<< HEAD
   .then(data => {
 	  console.log(data);
 	  
@@ -115,7 +111,5 @@ async function excluirSupermercado(idSupermercado){
 }
 
 //INSERIR
-=======
   location.reload();
 }
->>>>>>> 4e38574d6a183f125cd5d821a7b50fb181de8fc4
