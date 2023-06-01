@@ -16,6 +16,12 @@ public class Supermercado {
 		this.nome = nome;
 		this.site = site;
 		}
+	
+	public Supermercado(int id_supermercado, String nome, String site) {
+		this.id_supermercado = id_supermercado;
+		this.nome = nome;
+		this.site = site;
+		}
 
 	public int getId_supermercado() {
 		return id_supermercado;
