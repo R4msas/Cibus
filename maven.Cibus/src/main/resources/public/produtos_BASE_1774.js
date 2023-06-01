@@ -74,24 +74,22 @@ function redirecionarParaAtualizar(id_oferta, descricao, preco, tipoProduto, cod
 
 carrega();
 
-
+<<<<<<< HEAD
 //=======================================================FETCHs
 //EXCLUIR:
-<<<<<<< HEAD
-
+async function excluir(id){
+	let url = `/delete/?id=${id}`;
 =======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
 async function excluir(id) {
   let url = `/delete/?id=${id}`;
+>>>>>>> 4e38574d6a183f125cd5d821a7b50fb181de8fc4
 
   await fetch(url, { method: "DELETE" })
     .then(data => {
       console.log(data);
-    })
-<<<<<<< HEAD
+    });
 
-=======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
+<<<<<<< HEAD
   .then(data => {
 	  console.log(data);
 	  
@@ -116,14 +114,8 @@ async function excluirSupermercado(idSupermercado){
 	location.reload();	
 }
 
-<<<<<<< HEAD:maven.Cibus/src/main/resources/public/Jprodutos.js
-=======
 //INSERIR
-<<<<<<< HEAD
+=======
   location.reload();
 }
-=======
->>>>>>> f4c6ac42f94799ddf7ff152a16320dc2d928af3e:maven.Cibus/src/main/resources/public/produtos.js
-
-
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
+>>>>>>> 4e38574d6a183f125cd5d821a7b50fb181de8fc4

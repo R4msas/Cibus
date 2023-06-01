@@ -77,10 +77,7 @@ carrega();
 
 //=======================================================FETCHs
 //EXCLUIR:
-<<<<<<< HEAD
 
-=======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
 async function excluir(id) {
   let url = `/delete/?id=${id}`;
 
@@ -88,10 +85,7 @@ async function excluir(id) {
     .then(data => {
       console.log(data);
     })
-<<<<<<< HEAD
 
-=======
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
   .then(data => {
 	  console.log(data);
 	  
@@ -116,14 +110,6 @@ async function excluirSupermercado(idSupermercado){
 	location.reload();	
 }
 
-<<<<<<< HEAD:maven.Cibus/src/main/resources/public/Jprodutos.js
-=======
 //INSERIR
-<<<<<<< HEAD
   location.reload();
 }
-=======
->>>>>>> f4c6ac42f94799ddf7ff152a16320dc2d928af3e:maven.Cibus/src/main/resources/public/produtos.js
-
-
->>>>>>> 331c3ce59edec40752e566a8fff3cb51a41d36a0
