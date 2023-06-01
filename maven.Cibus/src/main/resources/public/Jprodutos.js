@@ -108,8 +108,5 @@ async function excluirSupermercado(idSupermercado){
 	location.reload();	
 }
 
-//INSERIR
 
-  location.reload();
-}
 
