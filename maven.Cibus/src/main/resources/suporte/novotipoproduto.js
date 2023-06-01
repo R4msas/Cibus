@@ -28,10 +28,10 @@ function carrega(){
         str += `
           <tr>
             <td>${tipoproduto.id}</td>
-            <td>R$ ${tipoproduto.nome}</td>
+            <td>${tipoproduto.nome}</td>
             <td>
               <button onClick="excluir(${tipoproduto.id})" class="excluir-btn">Excluir</button>
-              <button onClick="redirecionarParaAtualizar(${tipoproduto.id}, ${tipoproduto.nome})" class="atualizar-btn">Atualizar</button>
+              <button onClick="redirecionarParaAtualizar(${tipoproduto.id}, '${tipoproduto.nome}')" class="atualizar-btn">Atualizar</button>
             </td>
           </tr>
         `;

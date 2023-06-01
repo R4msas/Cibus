@@ -1,5 +1,5 @@
 function carrega() {
-  let url = `/allSupermercado`;
+  let url = `/allSupermercado/`;
   fetch(url)
     .then(res => res.json())
     .then(data => {
