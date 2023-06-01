@@ -1,36 +1,15 @@
 package model;
+import java.io.File;
+import java.util.Scanner;
 
-import org.json.JSONObject;
-
+import org.apache.hadoop.shaded.com.nimbusds.jose.shaded.json.JSONObject;
 public class Oferta{
+    
     private String descricao;
-    private int id_oferta;
-	private float preco;
+    private float preco;
     private int codSupermercado;
     private int tipoProduto;
-    //construtor 
-    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
-        this.descricao = descricao;
-        this.preco = preco;
-        this.codSupermercado = codSupermercado;
-        this.tipoProduto = tipoProduto;
-    }
-    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto, int id_oferta) {
-        this.descricao = descricao;
-        this.preco = preco;
-        this.codSupermercado = codSupermercado;
-        this.tipoProduto = tipoProduto;
-        this.id_oferta = id_oferta;
-    }
-    
-    
-	public Oferta() {
-        this.descricao = null;
-        this.preco = 0;
-        this.codSupermercado = 0;
-        this.tipoProduto = 0;
-        this.id_oferta = 0;
-    }
+    private int id_oferta;
     
     public int getId_oferta() {
 		return id_oferta;
@@ -38,7 +17,7 @@ public class Oferta{
 	public void setId_oferta(int id_oferta) {
 		this.id_oferta = id_oferta;
 	}
-    public int getTipoProduto()
+	public int getTipoProduto()
     {
         return tipoProduto;
     }
@@ -70,9 +49,22 @@ public class Oferta{
     {
         this.codSupermercado = codSupermercado;
     }
+    public Oferta(String descricao, float preco, int codSupermercado, int tipoProduto) {
+        this.descricao = descricao;
+        this.preco = preco;
+        this.codSupermercado = codSupermercado;
+        this.tipoProduto = tipoProduto;
+    }
     
+	public Oferta() {
+        this.descricao = null;
+        this.preco = 0;
+        this.codSupermercado = 0;
+        this.tipoProduto = 0;
+    }
     
-        
+ 
+   
     public void ler(String stringRecebida) throws Exception
     {
             String[] keyValue = stringRecebida.split(":");
@@ -83,10 +75,10 @@ public class Oferta{
             
     }
 
-    public int classificaTipo()
+    public int classificaTipo()//efetua a comparação da descrição com termos comuns de produtos, caso seja possível retorna o inteiro para setTipo, do contrário retorna -1
     {
         String carne[]={"carne", "acem", "acém", "paleta", "costela", "picanha", "chã de", "costelinha","hamburguer","linguica","linguiça","file","filé","salsicha","empanado"};
-        String bebidaAlcolica[]={"whisky"," vinho","vodka","cachaça","cachaca"};
+        String bebidaAlcolica[]={"whisky"," vinho","vodka","cachaça","cachaca","rum"};
         String macarrao[]={"macarrao","noodle","massa"};
         String refrigerante[]={"refrigerante", "coca-cola","pepsi","fanta"};
         String bolacha[]={"bolacha","biscoito"};
@@ -96,42 +88,30 @@ public class Oferta{
         String sabao[]={"sabao","detergente","lava roupas"};
         String cafe[]={"cafe", "café"};
         String oleo[]={"oleo","óleo","azeite"};
-        String racao[]= {"racao","ração"};
-        
-        int posicao=20;//inicia a variável como 20, que é não classificado
+        int posicao=0;
         Boolean possuiPosicao=false;
-        int tipoProduto=-1;
+        int tipoProduto=20;
         String stringRecebida =descricao.toLowerCase();
         if(stringRecebida.contains("arroz"))
         {
             possuiPosicao=true;
-            posicao=3;
+            tipoProduto=3;
         }
         else if(stringRecebida.contains("suco"))
         {
             possuiPosicao=true;
-            posicao=7;
+            tipoProduto=7;
         }
         else if(stringRecebida.contains("cerveja"))
         {
             possuiPosicao=true;
-            posicao=15;
+            tipoProduto=15;
         }
               else if(stringRecebida.contains("farinha de trigo"))
         {
             possuiPosicao=true;
-            posicao=16;
+            tipoProduto=16;
         }
-          else if(stringRecebida.contains("agua mineral"))
-          {
-                  possuiPosicao=true;
-                  posicao=23;
-          }
-          else if(stringRecebida.contains("sabonete"))
-          {
-              possuiPosicao=true;
-              posicao=13;
-          }
         while(possuiPosicao==false&&posicao<carne.length)
         {
             if(stringRecebida.contains(carne[posicao]))
@@ -245,7 +225,7 @@ public class Oferta{
             if(stringRecebida.contains(sabao[posicao]))
             {
                 possuiPosicao=true;
-                tipoProduto=21;
+                tipoProduto=13;
             }
             else{
             posicao++;
@@ -262,21 +242,6 @@ public class Oferta{
             else{
              posicao++;
             }
-        }
-        posicao=0;
-        {
-        	while(possuiPosicao==false&&posicao<racao.length)
-        	{
-        		if(stringRecebida.contains(racao[posicao]))
-                {
-                    possuiPosicao=true;
-                    tipoProduto=22;
-                }
-        		else {
-        			possuiPosicao=true;
-        			posicao++;
-        		}
-        	}
         }
  
 
