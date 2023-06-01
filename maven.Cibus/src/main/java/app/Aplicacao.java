@@ -47,10 +47,12 @@ public class Aplicacao {
         post("/insertTipo/", (request, response) -> tipo_produtoservice.insertPostTipo_produto(request, response));
         delete("/deleteTipo/", (request, response) -> tipo_produtoservice.deleteTipo_produto(request, response));
         put("/updateTipo/", (request, response) -> tipo_produtoservice.updateTipo_produto(request, response));
+        get("/allTipo", (request, response) -> ofertaService.getAll(request, response));
         
         //SUPERMERCADO INS, EXCLUIR, ATT,
         post("/insertSupermercado/", (request, response) ->  supermercadoService.insertPostSupermercado(request, response));
         delete("/deleteSupermercado/", (request, response) -> supermercadoService.deleteSupermercado(request, response));
         put("/updateSupermercado/", (request, response) -> supermercadoService.updateSupermercado(request, response));
+        get("/allSupermercado", (request, response) -> supermercadoService.getAllSupermercado(request, response));
     }
 }

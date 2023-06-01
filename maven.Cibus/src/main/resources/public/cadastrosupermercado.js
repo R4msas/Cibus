@@ -1,5 +1,5 @@
 function carrega() {
-  let url = `/all`;
+  let url = `/allSupermercado`;
   fetch(url)
     .then(res => res.json())
     .then(data => {
@@ -11,10 +11,10 @@ function carrega() {
         str += `
           <tr>
             <td>${supermercado.nome}</td>
-            <td>${supermercado.codSupermercado}</td>
+            <td>${supermercado.id_supermercado}</td>
             <td>${supermercado.site}</td>
             <td>
-              <button onClick="excluir(${supermercado.codSupermercado})" class="excluir-btn">Excluir</button>
+              <button onClick="excluir(${supermercado.id_supermercado})" class="excluir-btn">Excluir</button>
               <button onClick="redirecionarParaAtualizar(${supermercado.codSupermercado}, '${supermercado.nome}', '${supermercado.site}')" class="atualizar-btn">Atualizar</button>
             </td>
           </tr>
@@ -39,3 +39,20 @@ function redirecionarParaAtualizar(codSupermercado, nome, site) {
 }
 
 carrega();
+
+async function excluir(id) {
+  let url = `/deleteSupermercado/?id_supermercado=${id}`;
+
+  await fetch(url, { method: "DELETE" })
+    .then(data => {
+      console.log(data);
+    })
+
+  .then(data => {
+	  console.log(data);
+	  
+	  
+	  }
+	)
+	location.reload();	
+}

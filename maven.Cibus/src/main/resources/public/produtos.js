@@ -86,8 +86,6 @@ async function excluir(id) {
       console.log(data);
     })
 
-
-
   .then(data => {
 	  console.log(data);
 	  
@@ -96,24 +94,3 @@ async function excluir(id) {
 	)
 	location.reload();	
 }
-
-
-async function excluirSupermercado(idSupermercado){
-	let url = `/deleteSupermercado/?id_supermercado=${idSupermercado}`;
-
-	await fetch(url, {method:"DELETE"})
-
-  .then(data => {
-	  console.log(data);
-	  
-	  
-	  }
-	)
-	location.reload();	
-}
-
-
-
-
-
-
