@@ -37,7 +37,7 @@ public class ListaEncadeada{
     	Boolean resposta=true;
         Celula tmp=primeiro;
     	OfertaDAO bd = new OfertaDAO();
-		//bd.connection();
+		bd.connect();
         while(tmp.getProx()!=null)
         {
         
@@ -47,7 +47,6 @@ public class ListaEncadeada{
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				
-				bd.close();
 				e.printStackTrace();
 				resposta=false;
 			}
@@ -79,12 +78,11 @@ public class ListaEncadeada{
     public void percorreAListaEClassifica()
     {            
         Celula tmp=primeiro;
-        while(tmp.getProx()!=null||tmp==ultimo)
+        while(tmp.getProx()!=null)
         {
-            tmp=primeiro.getProx();
+            tmp=tmp.getProx();
             int tipoProduto=tmp.getAtual().classificaTipo();
             tmp.getAtual().setTipoProduto(tipoProduto);
-            removerInicio();
         }
         
     }
