@@ -67,7 +67,7 @@ public class TipoProdutoDAO  extends DAO  {
         return tipo_produto;
     }
     
-    public List<TipoProduto> findAll() throws SQLException {
+    public List<TipoProduto> getAll() throws SQLException {
         PreparedStatement stmt = connection.prepareStatement("SELECT * FROM tipo_produto");
         ResultSet rs = stmt.executeQuery();
         
