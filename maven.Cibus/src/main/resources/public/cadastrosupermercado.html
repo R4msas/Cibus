@@ -4,24 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE-edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Supermercados</title>
+  <title>Supermercados Cadastrados</title>
   <link rel="stylesheet" href="cadastrosupermercado.css">
 </head>
 <body>
   <header>
-    <h1>Cadastro de Supermercados</h1>
+    <h1>Supermercados Cadastrados:</h1>
   </header>
 
-  <form>
-    <label for="supermercado-nome">Nome do Supermercado:</label>
-    <input type="text" id="supermercado-nome" name="supermercado-nome">
+  <div class="produtos-container">
+    <table id="supermercados-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Código</th>
+          <th>Link</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+      </tbody>
+    </table>
+  </div>
 
-    <label for="supermercado-link">Link do Supermercado:</label>
-    <input type="text" id="supermercado-link" name="supermercado-link">
-
-    <input type="submit" value="Cadastrar Supermercado">
-  </form>
-
-  <script src="cadastrosupermercado.css"></script>
+  <script src="cadastrosupermercado.js"></script>
 </body>
 </html>
