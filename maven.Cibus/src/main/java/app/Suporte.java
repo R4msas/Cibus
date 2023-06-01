@@ -36,6 +36,7 @@ public class Suporte {
         get("/tipo/:id/pesquisa/:pesquisa", (request, response) -> ofertaService.getPorTipo(request, response));
         get("/all", (request, response) -> ofertaService.getAll(request, response));
         delete("/delete/", (request, response) -> ofertaService.delete(request, response));
+        put("/update/", (request, response) -> ofertaService.update(request, response));
         
         //Tipo produto
         //get("/insertTipo/:nome", (request, response) -> tipo_produtoservice.insertTipo_produto(request, response));

@@ -11,44 +11,51 @@
 <body>
   <h1>Cadastro de Produtos</h1>
 
-  <form>
-    <label for="produto-nome">Nome do Produto:</label>
-    <input type="text" id="produto-nome" name="produto-nome" required>
+  <table>
+    <tr>
+      <td><label for="produto-nome">Nome do Produto:</label></td>
+      <td><input type="text" id="produto-nome" name="produto-nome" required></td>
+    </tr>
+    <tr>
+      <td><label for="produto-preco">Preço:</label></td>
+      <td><input type="text" id="produto-preco" name="produto-preco" required></td>
+    </tr>
+    <tr>
+      <td><label for="produto-tipo">Tipo do Produto:</label></td>
+      <td>
+        <div class="select-container">
+          <select id="produto-tipo" name="produto-tipo" required>
+            <option value="1">Carne</option>
+            <option value="2">Bebidas</option>
+            <option value="3">Arroz</option>
+            <option value="4">Feijão</option>
+            <option value="5">Óleos</option>
+            <option value="6">Macarrão</option>
+            <option value="7">Suco</option>
+            <option value="8">Refrigerante</option>
+            <option value="9">Bolacha</option>
+            <option value="10">Pão</option>
+            <option value="11">Laticínios</option>
+            <option value="12">Xampu</option>
+            <option value="13">Sabonete</option>
+            <option value="14">Sabão</option>
+            <option value="15">Cerveja</option>
+            <option value="16">Farinha de Trigo</option>
+            <option value="17">Café</option>
+            <option value="18">Iogurte</option>
+            <option value="19">Leite</option>
+          </select>
+          <a href="novotipoproduto.html" id="adicionar-tipo" class="button">Adicionar Tipo de Produto</a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="produto-supermercado">Supermercado:</label></td>
+      <td><input type="text" id="produto-supermercado" name="produto-supermercado" required></td>
+      <td><button id="atualiza-btn">Atualizar</button></td>
+    </tr>
+  </table>
 
-    <label for="produto-preco">Preço:</label>
-    <input type="text" id="produto-preco" name="produto-preco" required >
-
-    <label for="produto-tipo">Tipo do Produto:</label>
-    <div class="select-container">
-      <select id="produto-tipo" name="produto-tipo" required>
-        <option value="1">Carne</option>
-        <option value="2">Bebidas</option>
-        <option value="3">Arroz</option>
-        <option value="4">Feijão</option>
-        <option value="5">Óleos</option>
-        <option value="6">Macarrão</option>
-        <option value="7">Suco</option>
-        <option value="8">Refrigerante</option>
-        <option value="9">Bolacha</option>
-        <option value="10">Pão</option>
-        <option value="11">Laticínios</option>
-        <option value="12">Xampu</option>
-        <option value="13">Sabonete</option>
-        <option value="14">Sabão</option>
-        <option value="15">Cerveja</option>
-        <option value="16">Farinha de Trigo</option>
-        <option value="17">Café</option>
-        <option value="18">Iogurte</option>
-        <option value="19">Leite</option>
-      </select>
-      <a href="novotipoproduto.html" id="adicionar-tipo" class="button">Adicionar Tipo de Produto</a>
-    </div>
-
-    <label for="produto-supermercado">Supermercado:</label>
-    <input type="text" id="produto-supermercado" name="produto-supermercado" required>
-
-   <button onClick="atualiza(${oferta.id_oferta},${oferta.descricao},${oferta.preco},${oferta.tipoProduto},${oferta.codSupermercado})" class="atualizar-btn">Atualizar</button>
-  </form>
   <script src="cadastrarprodutos.js"></script>
-  </body>
+</body>
 </html>
