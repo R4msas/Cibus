@@ -88,6 +88,25 @@ public class SupermercadoService {
         return(null);
     }
     
+    public Object getAllSupermercado(Request request, Response response) throws URISyntaxException, SQLException {				
+    	response.header("Content-Type", "application/json");
+    	response.header("Content-Encoding", "UTF-8");
+    	
+    	supermercadoDAO.connect();
+    	
+    	JSONArray arrayDeSupermercados = new JSONArray();
+    	
+    	for (Supermercado s : supermercadoDAO.getAllSupermercado()) {
+    		Supermercado supermercado = (Supermercado)s;
+    		arrayDeSupermercados.put(supermercado.toJson());
+    	}
+
+    	supermercadoDAO.close();
+    				
+    	return arrayDeSupermercados;
+    }
+    
+    
     
  
 	

@@ -74,6 +74,48 @@ input[type="submit"]:hover {
   align-items: center;
   height: 100%;
 }
+
 .form-container {
   width: 400px;
+  margin-top: 80px;
+  padding: 10px;
+}
+
+#tipos-produto-table {
+  width: 500px;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#tipos-produto-table th,
+#tipos-produto-table td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#tipos-produto-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+#tipos-produto-table td {
+  color: #333;
+}
+
+.atualizar-btn,
+.excluir-btn {
+  padding: 8px 12px;
+  margin-right: 5px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+}
+
+.atualizar-btn:hover,
+.excluir-btn:hover {
+  background-color: #555;
 }

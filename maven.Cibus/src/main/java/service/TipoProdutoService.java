@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import org.json.JSONArray;
 
 import dao.TipoProdutoDAO;
+import model.Oferta;
 import model.TipoProduto;
 import spark.Request;
 import spark.Response;
@@ -22,27 +23,21 @@ public class TipoProdutoService {
         this.tipoProdutoDAO = new TipoProdutoDAO();
     }
 
-    /* public Object insertTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
+    public Object getTipoProduto(Request request, Response response) throws URISyntaxException, SQLException {
 
-        tipoProdutoDAO.connect();
-
-        String nome = request.params(":nome");
-
-        TipoProduto tipoProduto = new TipoProduto(nome);
-        System.out.println(tipoProduto.getNome());
-        
-        tipoProdutoDAO.insertTipoProduto(tipoProduto);
-
-        response.status(201); // created
-        response.redirect("../menu.html");
-
-
+    	tipoProdutoDAO.connect();
+    	JSONArray arrayDeTipos = new JSONArray();
+    	
+    	for (TipoProduto o : tipoProdutoDAO.getAll()) {
+    		TipoProduto tipoProduto = (TipoProduto)o;
+    		arrayDeTipos.put(tipoProduto.toJson());
+    	}
 
         tipoProdutoDAO.close();
+
+    	return arrayDeTipos;
         
-        return(null);
     }
-    */
     
     public Object insertPostTipo_produto(Request request, Response response) throws URISyntaxException, SQLException {
 
@@ -51,12 +46,6 @@ public class TipoProdutoService {
         String nome = request.queryParams("nome");
 
         tipoProdutoDAO.insertTipoProduto(nome);
-
-        response.status(201); // created
-        response.redirect("../menu.html");
-
-
-
         tipoProdutoDAO.close();
         
         return(null);

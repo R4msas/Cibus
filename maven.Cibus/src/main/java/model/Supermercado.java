@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 public class Supermercado {
 	private int id_supermercado;
 	private String nome;
@@ -46,4 +48,13 @@ public class Supermercado {
 	public void setSite(String site) {
 		this.site = site;
 		}
-	}
+	
+
+public JSONObject toJson() {
+	JSONObject obj = new JSONObject();
+	obj.put("id_supermercado", this.getId_supermercado());
+	obj.put("nome", this.getNome());
+	obj.put("site", this.getSite());
+	return obj;
+}
+}

@@ -1,4 +1,6 @@
 package model;
+import org.apache.hadoop.shaded.com.nimbusds.jose.shaded.json.JSONObject;
+
 
 public class TipoProduto {
 	private int idProduto;
@@ -36,4 +38,10 @@ public class TipoProduto {
 	public void setNome(String nome) {
 		this.nome = nome;
 		}
-	}
+	
+	public JSONObject toJson() {
+		JSONObject obj = new JSONObject();
+		obj.put("id", this.getIdProduto());
+		obj.put("nome", this.getNome());
+		return obj;
+	}}

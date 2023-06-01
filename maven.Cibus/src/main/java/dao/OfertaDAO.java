@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Oferta;
+import model.TipoProduto;
 
 
 
@@ -44,7 +45,8 @@ public class OfertaDAO extends DAO {
         stmt.close();
     }
 
-   /* 
+   
+	
     public void update(Oferta oferta) throws SQLException {
         String sql = "UPDATE oferta SET id_supermercado = ?, id_produto = ?, preco = ?, descricao = ? WHERE id_oferta = ?";
 
@@ -57,7 +59,10 @@ public class OfertaDAO extends DAO {
 
             statement.executeUpdate();
         }
-    }*/
+    }
+    
+
+ 
 
     /*public void delete(Oferta oferta) throws SQLException {
         String sql = "DELETE FROM oferta WHERE id_oferta = ?";

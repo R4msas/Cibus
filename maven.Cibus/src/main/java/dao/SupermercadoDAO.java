@@ -60,6 +60,18 @@ public class SupermercadoDAO  extends DAO  {
         }
     }
     
+    public List<Supermercado> getAllSupermercado() throws SQLException {
+        String sql = "SELECT * FROM supermercado";
+        try (PreparedStatement stmt = connection.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            List<Supermercado> supermercados = new ArrayList<>();
+            while (rs.next()) {
+                supermercados.add(new Supermercado(rs.getInt("id_supermercado"), rs.getString("nome"), rs.getString("site")));
+            }
+            return supermercados;
+        }            
+}
+    
     /* Método para buscar um supermercado pelo seu ID no banco de dados
     public Supermercado findById(int id) throws SQLException {
         String sql = "SELECT * FROM supermercado WHERE id_supermercado = ?";
@@ -77,16 +89,6 @@ public class SupermercadoDAO  extends DAO  {
    */
     
     /* Método para buscar todos os supermercados no banco de dados 
-    public List<Supermercado> findAll() throws SQLException {
-        String sql = "SELECT * FROM supermercado";
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
-            List<Supermercado> supermercados = new ArrayList<>();
-            while (rs.next()) {
-                supermercados.add(new Supermercado(rs.getInt("id_supermercado"), rs.getString("nome"), rs.getString("site")));
-            }
-            return supermercados;
-            
-}
+   
 */
 }

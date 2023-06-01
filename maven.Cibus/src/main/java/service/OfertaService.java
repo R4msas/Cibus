@@ -7,6 +7,7 @@ import org.json.JSONArray;
 
 import dao.OfertaDAO;
 import model.Oferta;
+import model.TipoProduto;
 import spark.Request;
 import spark.Response;
 
@@ -94,6 +95,31 @@ public Boolean delete(Request request, Response response) throws URISyntaxExcept
 
     
     ofertaDAO.delete(id);
+
+    response.status(200); // correct
+    response.redirect("../menu.html");
+
+
+
+    ofertaDAO.close();
+    
+    return(null);
+}
+
+public Boolean update(Request request, Response response) throws URISyntaxException, SQLException {
+
+    ofertaDAO.connect();
+
+    int id = Integer.parseInt(request.queryParams("id_oferta"));
+    String descricao = request.queryParams("descricao");
+    float preco = Float.parseFloat(request.queryParams("preco"));
+    int tipoProduto = Integer.parseInt(request.queryParams("tipoProduto"));
+    int supermercado = Integer.parseInt(request.queryParams("codSupermercado"));
+    
+    Oferta oferta = new Oferta(id,descricao, preco, supermercado, tipoProduto);
+    
+    
+    ofertaDAO.update(oferta);
 
     response.status(200); // correct
     response.redirect("../menu.html");
