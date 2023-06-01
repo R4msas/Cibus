@@ -20,8 +20,11 @@ async function atualiza(id_oferta,descricao,preco,tipoProduto,codSupermercado) {
 	  console.log(data);
 	  
 	  
+	  
+	  
+	  
+	  
 	  }
 	)
 	location.reload();	
 }
-  
