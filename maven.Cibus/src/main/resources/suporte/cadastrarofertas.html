@@ -10,13 +10,13 @@
 <body>
   <h1>Cadastro de Ofertas</h1>
 
-  <form id="oferta-form">
+  <form onsubmit="return false" id="oferta-form">
     <label for="oferta-arquivo">Arquivo:</label>
     <input type="text" id="oferta-arquivo" name="oferta-arquivo" required>
     
     <label for="oferta-arquivo">ID do supermercado:</label>
     <input type="text" id="supermercado-id" name="supermercado-id" required>
-    <button onSubmit="insere();return false" id="cadastro-btn" >Cadastrar ofertas</button>
+    <button onclick="insere()" id="cadastro-btn" >Cadastrar ofertas</button>
   </form>
   
 

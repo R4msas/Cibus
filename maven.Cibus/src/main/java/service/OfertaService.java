@@ -17,6 +17,7 @@ public class OfertaService{
 	public OfertaService() {
 		ofertaDAO = new OfertaDAO();
 	}
+	//lê o arquivo e aciona a classe lista encadeada
 public Boolean lerArquivo(Request request, Response response) throws Exception
 {	
 	ListaEncadeada list = new ListaEncadeada();

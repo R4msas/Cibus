@@ -16,6 +16,7 @@ public class ListaEncadeada{
     tmp=null;     
 
     }
+    //insere no final da lista encadeada
     public void inserirFinal(Celula tmp)
     {
         ultimo.setProx(tmp);
@@ -32,7 +33,8 @@ public class ListaEncadeada{
         return enviaBD();
         
     }
-    public Boolean enviaBD() //percorre a lista encadeada e envia os objetos Oferta para o BD
+    //percorre a lista encadeada e envia os objetos Oferta para o BD
+    public Boolean enviaBD()
     {
     	Boolean resposta=true;
         Celula tmp=primeiro;
@@ -55,6 +57,7 @@ public class ListaEncadeada{
         bd.close();
         return resposta;
     }
+    //remove a primeira celula da lista encadeada
     public Oferta removerInicio()  {
         if(primeiro.getProx()==ultimo)
         {
@@ -64,6 +67,7 @@ public class ListaEncadeada{
         primeiro.setProx(primeiro.getProx().getProx());
         return resposta;
     }
+    //remove a celula fim da lista encadeada
     public Oferta removerFim() {
         Celula temporaria=primeiro.getProx();
         while(temporaria.getProx()!=ultimo)
@@ -74,7 +78,7 @@ public class ListaEncadeada{
         temporaria.setProx(null);
         ultimo=temporaria;
         return resposta;
-    }
+    }//percorre a lista e classifica lexicamente em tipo de produto
     public void percorreAListaEClassifica()
     {            
         Celula tmp=primeiro;
@@ -86,6 +90,7 @@ public class ListaEncadeada{
         }
         
     }
+    //a partir da lista de arquivos cria um objeto do tipo oferta por cada linha
     public void criaListaDeOfertas(String nomeDoArquivo, int supermercado) throws Exception
     {
         Scanner sc = new Scanner(new File(nomeDoArquivo));

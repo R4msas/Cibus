@@ -30,7 +30,7 @@ function carrega() {
 
       for (let i = 0; i < data.length; i++) {
         let oferta = data[i];
-        let imagem = tipoProdutoImagem[oferta.tipoProduto] || "default.png";
+        let imagem = tipoProdutoImagem[oferta.tipoProduto] || "images/default.png";
         let supermercado;
 
        

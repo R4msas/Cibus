@@ -12,7 +12,7 @@ texto+=pytesseract.image_to_string(img)
 img=cv2.imread("page1.jpg")
 texto+=pytesseract.image_to_string(img)
 texto2=texto.strip('\n')
-with open("respBH.txt","w",encoding="utf-8") as f:
+with open("ocrSupermercadoBH.txt","w",encoding="utf-8") as f:
     f.write(texto2)
 
 print("desta vez eu não esqueci de abrir o arquivo")
