@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="atualizasupermercado.css">
 </head>
 <body>
-  <h1>Atualizar Supermercados</h1>
+  <h1>Atualizar/Cadastrar Supermercados</h1>
 
   <form>
     <label for="supermercado-nome">Nome do Supermercado:</label>
@@ -17,10 +17,19 @@
     <label for="supermercado-link">Link do Supermercado:</label>
     <input type="text" id="supermercado-link" name="supermercado-link" required>
     
-    <label for="supermercado-id"></label>
+    <label for="supermercado-id">ID do Supermercado</label>
     <input type="text" id="supermercado-id" name="supermercado-id" required>
 
     <button type="button" id="atualiza-btn">Atualizar</button>
+  </form>
+  <form>
+    <label for="supermercado-new-nome">Nome do Supermercado:</label>
+    <input type="text" id="supermercado-new-nome" name="supermercado-new-nome" required>
+
+    <label for="supermercado-new-link">Link do Supermercado:</label>
+    <input type="text" id="supermercado-new-link" name="supermercado-new-link" required>
+
+    <button type="button" id="cadastra-btn">Cadastrar</button>
   </form>
 
   <script src="atualizacupermercado.js"></script>
