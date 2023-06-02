@@ -53,7 +53,7 @@ select {
   margin-bottom: 10px;
 }
 
-input[type="submit"] {
+#cadastro-btn {
   width: 200px;
   height: 40px;
   background-color: #333;
