@@ -31,7 +31,7 @@ public class Suporte {
         //Crud's
         
         //Oferta
-        get("/pesquisa/:pesquisa", (request, response) -> ofertaService.getPesquisaOfertas(request, response));
+        get("/pesquisa/", (request, response) -> ofertaService.getPesquisaOfertas(request, response));
         post("/lerArquivo/", (request, response) -> ofertaService.lerArquivo(request, response));
         get("/tipo/:id/pesquisa/:pesquisa", (request, response) -> ofertaService.getPorTipo(request, response));
         get("/all", (request, response) -> ofertaService.getAll(request, response));
