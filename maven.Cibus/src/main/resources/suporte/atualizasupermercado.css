@@ -31,7 +31,7 @@ form {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
-  margin-top: 50px;
+  margin: 50px;
  width: 700px;
 }
 
@@ -65,5 +65,20 @@ input[type="text"] {
 }
 
 #atualiza-btn :hover {
+  background-color: #555;
+}
+
+#cadastra-btn {
+  width: 100%;
+  height: 40px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#cadastra-btn :hover {
   background-color: #555;
 }

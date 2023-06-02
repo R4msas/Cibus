@@ -23,3 +23,16 @@ document.getElementById("atualiza-btn").addEventListener("click", async function
       window.location.href = "cadastrosupermercado.html";
     });
 });
+document.getElementById("cadastra-btn").addEventListener("click", async function insere() {
+  
+  let descricao = document.getElementById('supermercado-new-nome').value;
+  let site = document.getElementById('supermercado-new-link').value;
+  
+  let url = `/insertSupermercado/?nome=${descricao}&site=${site}`;
+
+  await fetch(url, { method: "POST" })
+    .then(data => {
+      console.log(data);
+      window.location.href = "cadastrosupermercado.html";
+    });
+});
