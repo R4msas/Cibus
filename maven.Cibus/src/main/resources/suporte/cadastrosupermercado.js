@@ -15,7 +15,7 @@ function carrega() {
             <td>${supermercado.site}</td>
             <td>
               <button onClick="excluir(${supermercado.id_supermercado})" class="excluir-btn">Excluir</button>
-              <button onClick="redirecionarParaAtualizar(${supermercado.codSupermercado}, '${supermercado.nome}', '${supermercado.site}')" class="atualizar-btn">Atualizar</button>
+              <button onClick="redirecionarParaAtualizar(${supermercado.id_supermercado}, '${supermercado.nome}', '${supermercado.site}')" class="atualizar-btn">Atualizar</button>
             </td>
           </tr>
         `;
@@ -26,13 +26,13 @@ function carrega() {
     });
 }
 
-function redirecionarParaAtualizar(codSupermercado, nome, site) {
+function redirecionarParaAtualizar(id_supermercado, nome, site) {
   // Codifique os valores para evitar problemas com caracteres especiais na URL
   const nomeCodificado = encodeURIComponent(nome);
   const siteCodificado = encodeURIComponent(site);
 
   // Construa a URL com os parâmetros de consulta
-  const url = `atualizarsupermercado.html?codSupermercado=${codSupermercado}&nome=${nomeCodificado}&site=${siteCodificado}`;
+  const url = `atualizasupermercado.html?id_supermercado=${id_supermercado}&nome=${nomeCodificado}&site=${siteCodificado}`;
 
   // Redirecione para a página de atualização com os parâmetros de consulta
   window.location.href = url;
@@ -48,11 +48,8 @@ async function excluir(id) {
       console.log(data);
     })
 
-  .then(data => {
-	  console.log(data);
-	  
-	  
-	  }
-	)
-	location.reload();	
+    .then(data => {
+      console.log(data);
+    })
+  location.reload();
 }
