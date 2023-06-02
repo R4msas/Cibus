@@ -33,5 +33,5 @@ console.log(descricao + preco + tipoProduto + codSupermercado);
 	   console.log("acabou o fetch!!!!!!!!!!!!!!!")
 	window.location.href = "produtos.html";	
 })})
-//document.getElementById("btn-update").addEventListener("click", atualiza());
+document.getElementById("btn-update").addEventListener("click", atualiza());
 

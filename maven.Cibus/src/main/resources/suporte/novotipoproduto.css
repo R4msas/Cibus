@@ -27,95 +27,82 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-form {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-input[type="text"],
-select {
-  width: 100%;
-  height: 40px;
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  outline: none;
-  background-color: #f2f2f2;
-  color: #333;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-input[type="submit"] {
-  width: 200px;
-  height: 40px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-input[type="submit"]:hover {
-  background-color: #555;
-}
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin-top: 150px;
 }
 
 .form-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 40px;
   width: 400px;
-  margin-top: 80px;
-  padding: 10px;
 }
 
-#tipos-produto-table {
-  width: 500px;
-  border-collapse: collapse;
-  margin-top: 20px;
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-#tipos-produto-table th,
-#tipos-produto-table td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+label {
+  margin-bottom: 10px;
 }
 
-#tipos-produto-table th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 
-#tipos-produto-table td {
-  color: #333;
-}
-
-.atualizar-btn,
-.excluir-btn {
-  padding: 8px 12px;
-  margin-right: 5px;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
+button {
   background-color: #333;
   color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
   cursor: pointer;
 }
 
-.atualizar-btn:hover,
-.excluir-btn:hover {
-  background-color: #555;
+button:hover {
+  opacity: 0.8;
+}
+
+table {
+  width: 500px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #f2f2f2;
+  margin: 100px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+.excluir-btn {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.atualizar-btn {
+  background-color: green;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
 }

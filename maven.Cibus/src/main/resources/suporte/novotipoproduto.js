@@ -1,12 +1,23 @@
-function inserir(){
-	let url = `/insertTipo`
-	fetch(url)
+async function inserir(){
+	let nome = document.getElementById('tipo-produto-nome').value 
+	let url = `/insertTipo/?nome=${nome}`
+	await fetch(url, { method: "POST" })
+    .then(data => {
+      console.log(data);
+    })
+
+  .then(data => {
+	  console.log(data);
+	  
+	  }
+	)
+	//location.reload();	
 }
 
 
 
-function carrega() {
-  let url = `/allTipo`;
+function carrega(){
+  let url = `/allTipo/`;
   fetch(url)
     .then(res => res.json())
     .then(data => {
@@ -16,11 +27,11 @@ function carrega() {
         
         str += `
           <tr>
-            <td>${tipoproduto.idProduto}</td>
-            <td>R$ ${tipoproduto.nome}</td>
+            <td>${tipoproduto.id}</td>
+            <td>${tipoproduto.nome}</td>
             <td>
-              <button onClick="excluir(${tipoproduto.idProduto})" class="excluir-btn">Excluir</button>
-              <button onClick="redirecionarParaAtualizar(${tipoproduto.idProduto}, ${tipoproduto.nome})" class="atualizar-btn">Atualizar</button>
+              <button onClick="excluir(${tipoproduto.id})" class="excluir-btn">Excluir</button>
+              <button onClick="redirecionarParaAtualizar(${tipoproduto.id}, '${tipoproduto.nome}')" class="atualizar-btn">Atualizar</button>
             </td>
           </tr>
         `;
@@ -31,17 +42,16 @@ function carrega() {
     });
 }
 
-function redirecionarParaAtualizar(idProduto, nome) {
+function redirecionarParaAtualizar(id, nome) {
   // Codifique os valores para evitar problemas com caracteres especiais na URL
   const nomeCodificado = encodeURIComponent(nome);
 
   // Construa a URL com os parâmetros de consulta
-  const url = `atualizatipoproduto.html?idProduto=${idProduto}&nome=${nomeCodificado}`;
+  const url = `atualizatipoproduto.html?id=${id}&nome=${nomeCodificado}`;
 
   // Redirecione para a página de cadastro com os parâmetros de consulta
   window.location.href = url;
 }
-
 carrega();
 		
 		async function excluir(id) {
@@ -54,7 +64,6 @@ carrega();
 
   .then(data => {
 	  console.log(data);
-	  
 	  
 	  }
 	)
